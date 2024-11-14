@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://cj6le3ge104mc"]
+[gd_scene load_steps=2 format=3 uid="uid://cj6le3ge104mc"]
+
+[ext_resource type="Texture2D" uid="uid://hhbcntus3tjc" path="res://assets/node/Bubble_spritesheet.png" id="1_nl0ip"]
 
 [node name="Node2D" type="Node2D"]
+texture_filter = 1
+
+[node name="NODE" type="Node2D" parent="."]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NODE"]
+offset_right = 46.0
+offset_bottom = 32.0
+texture = ExtResource("1_nl0ip")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
