@@ -1,9 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1731534784
+::res://::1731590702
 icon.svg::CompressedTexture2D::143877037128783387::1731532868::1731532872::1::::<><>::
-main.tscn::PackedScene::5469213180740530806::1731534322::0::1::::<><>::
+main.gd::GDScript::-1::1731590642::0::1::::<>Node2D<>::
+main.tscn::PackedScene::5469213180740530806::1731590714::0::1::::<><>::uid://diu23ag62wqvd::::res://node.tscn<>res://main.gd
+node.tscn::PackedScene::7763749727013078989::1731590702::0::1::::<><>::uid://hhbcntus3tjc::::res://assets/node/Bubble_spritesheet.png<>res://scripts/rr_node.gd
 README.md::TextFile::-1::1731534098::0::1::::<><>::
 ::res://asprite/::1731534795
 ::res://assets/::1731534462
-::res://assets/node/::1731534819
+::res://assets/node/::1731535116
 Bubble_spritesheet.png::CompressedTexture2D::505837551413942464::1731535115::1731535116::1::::<><>::
+::res://scripts/::1731590702
+rr_node.gd::GDScript::-1::1731590686::0::1::::rr_node<>Node2D<>::

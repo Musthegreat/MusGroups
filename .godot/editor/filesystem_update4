@@ -1,1 +1,6 @@
 res://main.tscn
+res://node.tscn
+res://main.gd
+res://rr_node.gd
+res://scripts/rr_node.gd
+res://scripts/main.gd
