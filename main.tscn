@@ -7,6 +7,7 @@
 texture_filter = 1
 script = ExtResource("1_jegqg")
 camera = NodePath("Camera2D")
+cameraSpeed = 2
 
 [node name="NODE" parent="." instance=ExtResource("1_6wfig")]
 position = Vector2(154, 59)

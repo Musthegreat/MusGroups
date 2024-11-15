@@ -13,9 +13,9 @@ func _process(delta: float) -> void:
 		camera.set_zoom(lerp(camera.get_zoom(),camera.get_zoom()+Vector2(1,1), 1.2))
 		camera.set_offset(get_global_mouse_position())
 	
-	if Input.is_action_just_pressed("Scrolldown") and camera.get_zoom() != Vector2(1,1):
-		camera.set_zoom(lerp(camera.get_zoom(),camera.get_zoom()-Vector2(1,1), 1.2))
+	if Input.is_action_just_pressed("Scrolldown") and camera.get_zoom() > Vector2(1,1):
+		camera.set_zoom(camera.get_zoom()-Vector2(1,1))
 		camera.set_offset(get_global_mouse_position())
 	
 	if Input.get_axis("Up","Down") or Input.get_axis("Left","Right"):
-		camera.set_offset(Vector2(camera.get_offset().x+Input.get_axis("Left","Right")*cameraSpeed,camera.get_offset().y+Input.get_axis("Up","Down")*cameraSpeed))
+		camera.set_offset(Vector2(camera.get_offset().x+(Input.get_axis("Left","Right")*cameraSpeed),camera.get_offset().y+(Input.get_axis("Up","Down")*cameraSpeed)))
