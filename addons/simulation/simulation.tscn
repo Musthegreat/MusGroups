@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://csiwr0ev4jasa"]
+
+[node name="Simulation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grid_pattern = 1
+
+[node name="GraphNode2" type="GraphNode" parent="GraphEdit"]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 140.0
+offset_right = 515.0
+offset_bottom = 195.0
+mouse_filter = 1
+position_offset = Vector2(354, 140)
+resizable = true
+title = "Tree"
+ignore_invalid_connection_type = true
+
+[node name="GraphNode" type="GraphNode" parent="GraphEdit"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 137.0
+offset_right = 324.0
+offset_bottom = 192.0
+mouse_filter = 1
+position_offset = Vector2(163, 137)
+resizable = true
+title = "Tree"
+ignore_invalid_connection_type = true
