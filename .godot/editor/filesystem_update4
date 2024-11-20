@@ -1,1 +1,6 @@
+res://addons/simulation/Sim Properties.tscn
+res://addons/simulation/main.gd
 res://addons/simulation/simulation.tscn
+res://addons/simulation/menu.tscn
+res://addons/simulation/scripts/menu.gd
+res://addons/simulation/scripts/simulation.gd

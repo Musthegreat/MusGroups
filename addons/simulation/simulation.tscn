@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://csiwr0ev4jasa"]
+[gd_scene load_steps=2 format=3 uid="uid://csiwr0ev4jasa"]
+
+[ext_resource type="Script" path="res://addons/simulation/scripts/simulation.gd" id="1_xokci"]
 
 [node name="Simulation" type="Control"]
 layout_mode = 3
@@ -7,33 +9,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xokci")
 
 [node name="GraphEdit" type="GraphEdit" parent="."]
 layout_mode = 2
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 0.0420532
+offset_right = 1919.96
+offset_bottom = 1080.0
+scroll_offset = Vector2(-258, -538)
 grid_pattern = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GraphNode2" type="GraphNode" parent="GraphEdit"]
 layout_mode = 0
-offset_left = 354.0
-offset_top = 140.0
-offset_right = 515.0
-offset_bottom = 195.0
+offset_left = 945.958
+offset_top = 447.0
+offset_right = 1106.96
+offset_bottom = 502.0
 mouse_filter = 1
-position_offset = Vector2(354, 140)
+position_offset = Vector2(687.958, -91)
 resizable = true
 title = "Tree"
 ignore_invalid_connection_type = true
 
 [node name="GraphNode" type="GraphNode" parent="GraphEdit"]
 layout_mode = 0
-offset_left = 163.0
-offset_top = 137.0
-offset_right = 324.0
-offset_bottom = 192.0
+offset_left = 646.958
+offset_top = 451.0
+offset_right = 807.958
+offset_bottom = 506.0
 mouse_filter = 1
-position_offset = Vector2(163, 137)
+position_offset = Vector2(388.958, -87)
 resizable = true
 title = "Tree"
 ignore_invalid_connection_type = true
