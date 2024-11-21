@@ -3,6 +3,7 @@ extends Control
 
 @export var newCondition: Button
 @export var conditionHolder: ScrollContainer
+var condition: Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,6 @@ func _process(delta: float) -> void:
 	pass
 
 func addCondition() -> void:
-	var condition: Button = Button.new()
+	condition = Button.new()
 	conditionHolder.add_child(condition)
 	condition.set_text("nice")
