@@ -1,3 +1,6 @@
+Control
+GridContainer
+Container
 MarginContainer
 AspectRatioContainer
 PanelContainer
@@ -9,6 +12,3 @@ ScrollContainer
 BoxContainer
 ColorRect
 Label
-Control
-MenuBar
-VBoxContainer
