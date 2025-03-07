@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxax74566hdtj"]
+
+[ext_resource type="Script" path="res://addons/simulation/Scripts/varContainer.gd" id="1_pby7e"]
+
+[node name="VarContainer" type="HBoxContainer" node_paths=PackedStringArray("lineEdit", "optionButton", "delete")]
+offset_right = 347.0
+offset_bottom = 31.0
+script = ExtResource("1_pby7e")
+lineEdit = NodePath("LineEdit")
+optionButton = NodePath("OptionButton")
+delete = NodePath("Delete")
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 2
+text = "X"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Name"
+editable = false
+expand_to_text_length = true
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "Select Type"
+popup/item_1/text = "INT"
+popup/item_1/id = 1
+popup/item_2/text = "FLOAT"
+popup/item_2/id = 2
+popup/item_3/text = "STRING"
+popup/item_3/id = 3
+popup/item_4/text = "BOOL"
+popup/item_4/id = 4

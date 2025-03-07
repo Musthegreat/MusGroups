@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcaqrd3serqq"]
+
+[ext_resource type="Script" path="res://addons/simulation/scripts/rr_node.gd" id="1_yj15t"]
+[ext_resource type="Texture2D" uid="uid://bcoddjc3ahlkw" path="res://pfp.png" id="2_5nj46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qkhk"]
+size = Vector2(100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kt4em"]
+font_size = 9
+
+[node name="RrNode" type="StaticBody2D" node_paths=PackedStringArray("ray", "area2D", "instanceID", "nodeName")]
+input_pickable = true
+script = ExtResource("1_yj15t")
+ray = NodePath("RayCast2D")
+area2D = NodePath("Area2D")
+instanceID = NodePath("instanceID")
+nodeName = NodePath("nodeName")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_2qkhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_5nj46")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(50, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2qkhk")
+
+[node name="nodeName" type="Label" parent="."]
+offset_right = 100.0
+offset_bottom = 23.0
+size_flags_vertical = 0
+text = "New Node"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="instanceID" type="Label" parent="."]
+offset_top = 87.0
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_vertical = 10
+text = "instance id"
+label_settings = SubResource("LabelSettings_kt4em")
+metadata/_edit_use_anchors_ = true

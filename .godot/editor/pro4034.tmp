@@ -1,0 +1,66 @@
+[editor_metadata]
+
+executable_path="C:/Users/mustj/OneDrive/Desktop/Godot_v4.3-stable_win64.exe"
+use_advanced_connections=true
+
+[recent_files]
+
+scenes=["res://addons/simulation/rr_node.tscn", "res://addons/simulation/variableScenes/varMenu.tscn", "res://editor.tscn", "res://addons/simulation/simulation.tscn", "res://addons/simulation/simulationMenu.tscn", "res://addons/simulation/logicMenu.tscn", "res://addons/simulation/logicScenes/logicMenu.tscn", "res://addons/simulation/logicScenes/Variable.tscn", "res://addons/simulation/logicScenes/Condition.tscn", "res://addons/simulation/variableScenes/varContainer.tscn"]
+scripts=["Vector2", "ResourceSaver", "ResourceLoader", "Resource", "Dictionary", "@GDScript", "res://addons/simulation/variableScenes/scripts/varContainer.gd", "PackedScene", "res://addons/simulation/main.gd", "Array"]
+
+[dialog_bounds]
+
+create_new_node=Rect2(918, 290, 900, 761)
+project_settings=Rect2(786, 213, 1200, 710)
+search_help=Rect2(640, 360, 1280, 720)
+editor_settings=Rect2(616, 393, 900, 700)
+export=Rect2(255, 366, 908, 735)
+
+[color_picker]
+
+picker_shape=3
+recent_presets=PackedColorArray(0.451851, 0.307323, 0.204917, 1, 0.409983, 0.276655, 0.182091, 1, 0.276736, 0.180524, 0.112142, 1, 0.245871, 0.194536, 0.144721, 1, 0.252762, 0.188579, 0.165594, 1, 0.333256, 0.253319, 0.224698, 1, 0.361101, 0.312848, 0.307475, 1, 0.313245, 0.269848, 0.26502, 1, 0.762018, 0.387375, 0.151964, 1)
+color_mode=0
+
+[texture_region_editor]
+
+snap_offset=Vector2(0, 0)
+snap_step=Vector2(8, 8)
+snap_separation=Vector2(0, 0)
+snap_mode=2
+
+[script_setup]
+
+last_selected_language="GDScript"
+
+[project_settings]
+
+show_builtin_actions=false
+advanced_mode=true
+
+[linked_properties]
+
+Button:scale=true
+
+[debug_options]
+
+run_deploy_remote_debug=false
+
+[export_options]
+
+default_filename="RepublicRising"
+
+[command_palette]
+
+command_history={
+"editor/project_settings": 1736008271
+}
+
+[shader_setup]
+
+last_selected_mode=1
+last_selected_language="VisualShader"
+
+[scripts_panel]
+
+show_scripts_panel=true

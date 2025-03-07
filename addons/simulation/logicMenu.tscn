@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtdjf1gytyi73"]
+
+[ext_resource type="Script" path="res://addons/simulation/Scripts/logicMenu.gd" id="1_4aa3e"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_q0l03"]
+number_color = Color(0.102775, 0.485461, 0, 1)
+symbol_color = Color(0.649654, 0.1918, 0.324693, 1)
+function_color = Color(0.121569, 0.388235, 0.772549, 1)
+
+[node name="Logic" type="Control" node_paths=PackedStringArray("conditionContainer", "logicList", "saveButton", "Name")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -781.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4aa3e")
+conditionContainer = NodePath("VBoxContainer/ScrollContainer/conditionContainer")
+logicList = NodePath("VBoxContainer/logicList")
+saveButton = NodePath("VBoxContainer/SaveUpdate")
+Name = NodePath("VBoxContainer/logicName")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="logicList" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+selected = 0
+
+[node name="logicName" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter logic name"
+alignment = 1
+select_all_on_focus = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="conditionContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="condition" type="CodeEdit" parent="VBoxContainer/ScrollContainer/conditionContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+syntax_highlighter = SubResource("CodeHighlighter_q0l03")
+highlight_all_occurrences = true
+
+[node name="SaveUpdate" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Save or Update"

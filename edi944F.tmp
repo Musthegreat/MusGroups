@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhscigh52b2pm"]
+
+[ext_resource type="PackedScene" uid="uid://dtdjf1gytyi73" path="res://addons/simulation/logicMenu.tscn" id="2_ynyun"]
+[ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/varMenu.tscn" id="3_mi7hi"]
+[ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/simulationMenu.tscn" id="4_65srf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baub4"]
+
+[sub_resource type="Theme" id="Theme_ii486"]
+Panel/colors/Empty = Color(1, 1, 1, 1)
+Panel/styles/panel = SubResource("StyleBoxEmpty_baub4")
+
+[node name="Editor" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(0.998059, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HFlowContainer" type="HSplitContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 100
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = SubResource("Theme_ii486")
+
+[node name="Control" type="Control" parent="CanvasLayer/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/HFlowContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+current_tab = 2
+
+[node name="Logic" parent="CanvasLayer/HFlowContainer/Control/TabContainer" instance=ExtResource("2_ynyun")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Variables" parent="CanvasLayer/HFlowContainer/Control/TabContainer" instance=ExtResource("3_mi7hi")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Simulation" parent="CanvasLayer/HFlowContainer/Control/TabContainer" instance=ExtResource("4_65srf")]
+layout_mode = 2
+metadata/_tab_index = 2

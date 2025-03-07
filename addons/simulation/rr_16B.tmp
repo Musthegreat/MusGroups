@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://blcaqrd3serqq"]
+
+[ext_resource type="Script" path="res://addons/simulation/scripts/rr_node.gd" id="1_yj15t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qkhk"]
+size = Vector2(100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kt4em"]
+font_size = 9
+
+[node name="RrNode" type="Node2D" node_paths=PackedStringArray("rigidBody", "instanceID", "nodeName")]
+script = ExtResource("1_yj15t")
+rigidBody = NodePath("RigidBody2D")
+instanceID = NodePath("VBoxContainer/instanceID")
+nodeName = NodePath("VBoxContainer/nodeName")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_2qkhk")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="nodeName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "New Node"
+horizontal_alignment = 1
+
+[node name="instanceID" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "instance id"
+label_settings = SubResource("LabelSettings_kt4em")
