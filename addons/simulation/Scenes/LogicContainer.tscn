@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://v7kcoj5yld1j"]
+
+[ext_resource type="Script" path="res://addons/simulation/Scripts/LogicContainer.gd" id="1_dbvt0"]
+
+[node name="LogicContainer" type="HBoxContainer" node_paths=PackedStringArray("delete", "option")]
+size_flags_horizontal = 3
+script = ExtResource("1_dbvt0")
+delete = NodePath("Button")
+option = NodePath("OptionButton")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "X"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2

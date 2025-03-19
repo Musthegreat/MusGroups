@@ -1,4 +1,3 @@
-@tool
 extends HBoxContainer
 class_name varContainer
 signal restart
@@ -98,7 +97,11 @@ func loadVar(vars: Dictionary) -> void:
 			varBox.add_item("true")
 			varBox.add_item("false")
 			
-			varBox._select_int(vars["Data"])
+			if vars["Data"] == "true":
+				varBox.select(0)
+			else:
+				varBox.select(1)
+			
 		_: 
 			pass
 

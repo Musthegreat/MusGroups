@@ -1,0 +1,15 @@
+res://addons/simulation/Scenes/map.tscn
+res://addons/simulation/Scripts/map.gd
+res://editor.tscn
+res://addons/simulation/Scenes/varMenu.tscn
+res://addons/simulation/Scenes/logicMenu.tscn
+res://addons/simulation/Scenes/group.tscn
+res://addons/simulation/Scenes/InspectorMenu.tscn
+res://addons/simulation/Resources/logic.gd
+res://addons/simulation/Scripts/InspectorMenu.gd
+res://addons/simulation/Scripts/Singleton.gd
+res://addons/simulation/Scripts/varContainer.gd
+res://addons/simulation/Scripts/varMenu.gd
+res://addons/simulation/Scripts/logicMenu.gd
+res://addons/simulation/Resources/group.gd
+res://addons/simulation/Scripts/group.gd

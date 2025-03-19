@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://dh147q8fvs03h"]
+
+[ext_resource type="Script" path="res://addons/simulation/Scripts/map.gd" id="1_c24n3"]
+[ext_resource type="PackedScene" uid="uid://cah44a2s0pa2y" path="res://addons/simulation/Scenes/group.tscn" id="2_yfoei"]
+
+[node name="Map" type="Control" node_paths=PackedStringArray("addGroup", "saveAll", "stepSimulation", "Graph")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c24n3")
+addGroup = NodePath("MarginContainer2/VBoxContainer/Add Group")
+saveAll = NodePath("MarginContainer2/VBoxContainer/Save All")
+stepSimulation = NodePath("MarginContainer2/Step Simulation")
+Graph = NodePath("MarginContainer/GraphEdit")
+Group = ExtResource("2_yfoei")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="MarginContainer"]
+layout_mode = 2
+minimap_enabled = false
+show_zoom_buttons = false
+show_minimap_button = false
+show_arrange_button = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_right = 9
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Add Group" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "New Group"
+
+[node name="Save All" type="Button" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Save All
+"
+
+[node name="Step Simulation" type="Button" parent="MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Step Simulation"

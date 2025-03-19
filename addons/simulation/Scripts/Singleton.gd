@@ -1,6 +1,5 @@
-@tool
 extends Node
-signal loadVar
+signal loadSelected
 
 var isDragging: bool = false
 var selectedGroup: String
@@ -45,39 +44,5 @@ func loadLists(type: String) -> PackedStringArray:
 	var contents: PackedStringArray = DirAccess.get_files_at("user://data/" + type)
 	return contents
 
-func save(type: String, data, Name: String) -> void:
-	var file
-	match type:
-		"group":
-			file = FileAccess.open("user://data/groups/" + fixFileName(Name) , FileAccess.WRITE)
-		"logic":
-			file = FileAccess.open("user://data/logic/" + fixFileName(Name) , FileAccess.WRITE)
-		_:
-			print("ERROR: file save error, proper type not provided.")
-	file.store_string(data)
-	print("Saved a " + type + " file correctly.")
-
-func loadGroup(instance: String) -> Dictionary:
-	if instance == "":
-		return {"Error": "faled to generate string"}
-	var file = FileAccess.open("user://data/groups/" + fixFileName(instance), FileAccess.READ)
-	var contents: Dictionary = JSON.parse_string(file.get_as_text())
-	return contents
-	
-func loadLogic(Name: String) -> Dictionary:
-	if Name == "":
-		return {"Error": "faled to generate string"}
-	var file = FileAccess.open("user://data/logic/" + fixFileName(Name), FileAccess.READ)
-	var contents: Dictionary = JSON.parse_string(file.get_as_text())
-	return contents
-
-#creates the group JSON file and populates it with the required dictionaries.
-func newGroup() -> String:
-	var instanceID: String = generateWord("abcdefghijklmnopABCDEFGHIJKLMNOP1234567890", 10)
-	var data: Dictionary = {"Name": "", "Location": Vector3(0,0,0), "Logics": [], "Vars": {}}
-	var file = FileAccess.open("user://data/groups/" + fixFileName(instanceID), FileAccess.WRITE)
-	file.store_string(JSON.stringify(data, "\t"))
-	return instanceID
-	
 func loadSelection() -> void:
-	loadVar.emit(selectedGroup)
+	loadSelected.emit(selectedGroup)

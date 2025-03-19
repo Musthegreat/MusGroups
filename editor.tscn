@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhscigh52b2pm"]
 
-[ext_resource type="PackedScene" uid="uid://dh147q8fvs03h" path="res://addons/simulation/main.tscn" id="1_vgchw"]
-[ext_resource type="PackedScene" uid="uid://dtdjf1gytyi73" path="res://addons/simulation/logicMenu.tscn" id="2_ynyun"]
-[ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/varMenu.tscn" id="3_mi7hi"]
-[ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/simulationMenu.tscn" id="4_65srf"]
+[ext_resource type="PackedScene" uid="uid://dh147q8fvs03h" path="res://addons/simulation/Scenes/map.tscn" id="1_vgchw"]
+[ext_resource type="PackedScene" uid="uid://dtdjf1gytyi73" path="res://addons/simulation/Scenes/logicMenu.tscn" id="2_ynyun"]
+[ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/Scenes/varMenu.tscn" id="3_mi7hi"]
+[ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/Scenes/InspectorMenu.tscn" id="4_65srf"]
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -41,6 +41,7 @@ size_flags_horizontal = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="TabContainer" type="TabContainer" parent="HFlowContainer/Control"]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +51,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 current_tab = 0
 
-[node name="Simulation" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("4_65srf")]
+[node name="Inspector" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("4_65srf")]
 layout_mode = 2
 metadata/_tab_index = 0
 

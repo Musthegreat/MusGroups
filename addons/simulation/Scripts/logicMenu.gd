@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 @export var conditionContainer: VBoxContainer
@@ -10,6 +9,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Singleton.firstLoad()
 	logicList.item_selected.connect(loadLogic)
 	saveButton.pressed.connect(save)
 	

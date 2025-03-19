@@ -33,10 +33,15 @@ size_flags_vertical = 3
 [node name="logicList" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
 selected = 0
+item_count = 2
+popup/item_0/text = "Testing.tres"
+popup/item_1/text = "newone.tres"
+popup/item_1/id = 1
 
 [node name="logicName" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "Testing.tres"
 placeholder_text = "Enter logic name"
 alignment = 1
 select_all_on_focus = true
@@ -53,8 +58,14 @@ size_flags_vertical = 3
 [node name="condition" type="CodeEdit" parent="VBoxContainer/ScrollContainer/conditionContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+wrap_mode = 1
+minimap_draw = true
+caret_blink = true
 syntax_highlighter = SubResource("CodeHighlighter_q0l03")
 highlight_all_occurrences = true
+draw_control_chars = true
+symbol_lookup_on_click = true
+line_folding = true
 
 [node name="SaveUpdate" type="Button" parent="VBoxContainer"]
 layout_mode = 2
