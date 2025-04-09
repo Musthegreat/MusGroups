@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhscigh52b2pm"]
+[gd_scene load_steps=7 format=3 uid="uid://dhscigh52b2pm"]
 
 [ext_resource type="PackedScene" uid="uid://dh147q8fvs03h" path="res://addons/simulation/Scenes/map.tscn" id="1_vgchw"]
 [ext_resource type="PackedScene" uid="uid://dtdjf1gytyi73" path="res://addons/simulation/Scenes/logicMenu.tscn" id="2_ynyun"]
 [ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/Scenes/varMenu.tscn" id="3_mi7hi"]
 [ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/Scenes/InspectorMenu.tscn" id="4_65srf"]
+
+[sub_resource type="SystemFont" id="SystemFont_ivafm"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdh3f"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -30,10 +36,29 @@ grow_horizontal = 2
 grow_vertical = 2
 split_offset = 100
 
-[node name="Main" parent="HFlowContainer" instance=ExtResource("1_vgchw")]
+[node name="VSplitContainer" type="VSplitContainer" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 100
+
+[node name="Main" parent="HFlowContainer/VSplitContainer" node_paths=PackedStringArray("console") instance=ExtResource("1_vgchw")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+console = NodePath("../RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_colors/selection_color = Color(0.325441, 0.325441, 0.325441, 1)
+theme_override_fonts/mono_font = SubResource("SystemFont_ivafm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kdh3f")
+bbcode_enabled = true
+text = "MusGroups v0.1.0 pre-Alpha - visit \"https://discord.gg/XxwsTkY2p7\" for support."
+scroll_following = true
+threaded = true
+selection_enabled = true
 
 [node name="Control" type="Control" parent="HFlowContainer"]
 layout_mode = 2

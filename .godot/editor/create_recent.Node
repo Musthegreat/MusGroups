@@ -1,6 +1,9 @@
+RichTextLabel
+TextEdit
+VSplitContainer
 Button
-OptionButton
 HBoxContainer
+OptionButton
 VBoxContainer
 BoxContainer
 MarginContainer
@@ -9,6 +12,3 @@ GridContainer
 Label
 Panel
 GraphElement
-Control
-GraphEdit
-GraphFrame

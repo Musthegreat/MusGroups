@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhscigh52b2pm"]
+
+[ext_resource type="PackedScene" uid="uid://dh147q8fvs03h" path="res://addons/simulation/Scenes/map.tscn" id="1_vgchw"]
+[ext_resource type="PackedScene" uid="uid://dtdjf1gytyi73" path="res://addons/simulation/Scenes/logicMenu.tscn" id="2_ynyun"]
+[ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/Scenes/varMenu.tscn" id="3_mi7hi"]
+[ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/Scenes/InspectorMenu.tscn" id="4_65srf"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 100
+
+[node name="Main" parent="HFlowContainer" instance=ExtResource("1_vgchw")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="HFlowContainer/Control"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="Inspector" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("4_65srf")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Variables" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("3_mi7hi")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Logic" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("2_ynyun")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/simulation/Scripts/InspectorMenu.gd" id="1_oe7ux"]
 [ext_resource type="PackedScene" uid="uid://v7kcoj5yld1j" path="res://addons/simulation/Scenes/LogicContainer.tscn" id="2_l6h4j"]
 
-[node name="InspectorMenu" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder")]
+[node name="InspectorMenu" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder", "nodeName", "confirm")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,8 @@ newLogic = NodePath("BoxContainer/logicHolder/VBoxContainer/newLogic")
 saveLogic = NodePath("BoxContainer/logicHolder/VBoxContainer/saveLogic")
 logicHolder = NodePath("BoxContainer/logicHolder/VBoxContainer")
 logicContainer = ExtResource("2_l6h4j")
+nodeName = NodePath("BoxContainer/HBoxContainer/name")
+confirm = NodePath("BoxContainer/HBoxContainer/confirm")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -26,10 +28,18 @@ grow_vertical = 2
 alignment = 1
 vertical = true
 
-[node name="name" type="LineEdit" parent="BoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
 layout_mode = 2
+
+[node name="name" type="LineEdit" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "Node Name"
 alignment = 1
+
+[node name="confirm" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
 
 [node name="CheckBox" type="CheckBox" parent="BoxContainer"]
 layout_mode = 2

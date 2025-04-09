@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" path="res://addons/simulation/Scripts/group.gd" id="1_72ubh"]
 
-[node name="GraphElement" type="GraphElement"]
+[node name="GraphElement" type="GraphElement" node_paths=PackedStringArray("label")]
 offset_right = 110.0
 offset_bottom = 92.0
 mouse_filter = 0
 position_offset = Vector2(50, 50)
 resizable = true
 script = ExtResource("1_72ubh")
+label = NodePath("MarginContainer/Label")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2

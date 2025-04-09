@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="NODE AND SIMULATION"
+config/name="MusGroups"
 run/main_scene="res://editor.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"

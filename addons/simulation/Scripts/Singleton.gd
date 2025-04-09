@@ -3,6 +3,11 @@ signal loadSelected
 
 var isDragging: bool = false
 var selectedGroup: String
+var identifier: String
+
+#things the api has to have access to
+var maps
+var console: RichTextLabel
 
 func firstLoad() -> void:
 	var dir = DirAccess.open("user://")
@@ -25,6 +30,12 @@ func firstLoad() -> void:
 	if dir.change_dir("user://data/map") != OK:
 		print("made class map")
 		dir.make_dir_absolute("user://data/map")
+	
+func checkIdentifier(value: String, funcName: String) -> bool:
+	if value != Singleton.identifier:
+		Print.printErr(console, "You are not allowed access to function: " + funcName)
+		return false
+	return true
 	
 func fixFileName(string: String, type: String = ".json") -> String:
 	var regex = RegEx.new()

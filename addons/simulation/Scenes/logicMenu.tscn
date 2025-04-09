@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://addons/simulation/Scripts/logicMenu.gd" id="1_4aa3e"]
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_q0l03"]
-number_color = Color(0.102775, 0.485461, 0, 1)
-symbol_color = Color(0.649654, 0.1918, 0.324693, 1)
-function_color = Color(0.121569, 0.388235, 0.772549, 1)
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_x25f2"]
+number_color = Color(0.573944, 0.755961, 0.84551, 1)
+symbol_color = Color(0.743615, 0.753873, 0.782063, 1)
+function_color = Color(0.256869, 0.553465, 0.764987, 1)
+member_variable_color = Color(0.649364, 0.746298, 0.802176, 1)
 
 [node name="Logic" type="Control" node_paths=PackedStringArray("conditionContainer", "logicList", "saveButton", "Name")]
 layout_mode = 3
@@ -32,11 +33,6 @@ size_flags_vertical = 3
 
 [node name="logicList" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
-selected = 0
-item_count = 2
-popup/item_0/text = "Testing.tres"
-popup/item_1/text = "newone.tres"
-popup/item_1/id = 1
 
 [node name="logicName" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,13 +55,17 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 wrap_mode = 1
-minimap_draw = true
 caret_blink = true
-syntax_highlighter = SubResource("CodeHighlighter_q0l03")
+syntax_highlighter = SubResource("CodeHighlighter_x25f2")
 highlight_all_occurrences = true
+highlight_current_line = true
 draw_control_chars = true
 symbol_lookup_on_click = true
 line_folding = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
 
 [node name="SaveUpdate" type="Button" parent="VBoxContainer"]
 layout_mode = 2

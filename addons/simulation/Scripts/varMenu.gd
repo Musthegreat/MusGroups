@@ -26,7 +26,7 @@ func onRestart(path, index) -> void:
 	vBox.add_child(newContainer)
 
 func savePressed() -> void:
-	var g = group.loadGroup(Singleton.selectedGroup)
+	var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
 	if g is group:
 		#gotta erase everything so changes to existing vars apply
 		g.Variables.clear()
@@ -52,7 +52,7 @@ func loadSequence(selectedGroup) -> void:
 			child.queue_free()
 	
 	#create the new variables and populate them from info from the json file.
-	var g = group.loadGroup(Singleton.selectedGroup)
+	var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
 	if g is group:
 		for i in g.Variables:
 			var newContainer: HBoxContainer = PackedContainer.instantiate()
