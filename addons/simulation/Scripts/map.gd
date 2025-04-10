@@ -69,12 +69,13 @@ func groupAdd() -> void:
 
 func allSave() -> void:
 	var m = map.new()
-	for i in Graph.get_children():
-		if i is GraphElement:
-			m.append(i)
+	for g in Graph.get_children():
+		if g is groupVisual:
+			m.append(g)
 		m.save()
+	
+	print("saved everything")
 #endregion
-
 
 var executing: bool = true
 

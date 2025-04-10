@@ -1,7 +1,10 @@
-res://addons/simulation/variableScenes/varContainer.tscn::93947749d5e9e497cbc317139b4eb3f0::1734217448::res://.godot/exported/133200997/export-6207dfb131da311ad6a6a85dd6c8e09f-varContainer.scn
-res://addons/simulation/variableScenes/varMenu.tscn::fb29ed1b95959a7eeb9492d10dd93ca3::1734204380::res://.godot/exported/133200997/export-64244ebfa2799be10edd2cd6bcc9cc4b-varMenu.scn
-res://addons/simulation/logicMenu.tscn::95b769d92671047e0547f4af9046b785::1735842645::res://.godot/exported/133200997/export-f301b3195c979ae7b3587a28b71a32f1-logicMenu.scn
-res://addons/simulation/rr_node.tscn::aa21cd682408e94df5dd898af7c91001::1735844341::res://.godot/exported/133200997/export-04cfc4fd4d0f03aa61752cafdab89fc7-rr_node.scn
-res://addons/simulation/simulation.tscn::0eded19c335ead08bae2c51de4c63a31::1735844341::res://.godot/exported/133200997/export-5fb4758fd8270abc36d79711ee8d1b5b-simulation.scn
-res://addons/simulation/simulationMenu.tscn::c16e019fa2dc53a6bde795e4c1de4abb::1735842645::res://.godot/exported/133200997/export-02ec14c3be069d0fe1df131aeb319ae0-simulationMenu.scn
-res://editor.tscn::4315368a3712c26de3c85221176e2c99::1735856431::res://.godot/exported/133200997/export-af6f50cb0ae3c176bea78b3e44de373d-editor.scn
+res://editor.tscn::4000165982b30fcb9de029274d02fe5d::1744244876::res://.godot/exported/133200997/export-af6f50cb0ae3c176bea78b3e44de373d-editor.scn
+res://addons/lua-gdextension/lua_repl.tscn::cf9023fb387b5816fb6f2fde66444538::1744235002::res://.godot/exported/133200997/export-c2e760d165676c6a68128353813de3ad-lua_repl.scn
+res://addons/simulation/Scenes/group.tscn::5500aa8a8143a51d08374dfd05cc372a::1744245068::res://.godot/exported/133200997/export-77518b0f75021301390594e233e6dfe6-group.scn
+res://addons/simulation/Scenes/InspectorMenu.tscn::692a29e9da813d90a84c2cd11a10a82c::1744244876::res://.godot/exported/133200997/export-4881aec342ff56a912a5c8257e238cb9-InspectorMenu.scn
+res://addons/simulation/Scenes/LogicContainer.tscn::a5207f35afea5aca47a25b123ea86004::1744235002::res://.godot/exported/133200997/export-1633d094717a2cc9addfb6f4765d317c-LogicContainer.scn
+res://addons/simulation/Scenes/logicMenu.tscn::cc61aefe4bbe31faf2dff0d83d06a365::1744244876::res://.godot/exported/133200997/export-d0ceed28d5eddeee68159c153c629915-logicMenu.scn
+res://addons/simulation/Scenes/map.tscn::013b52f61522e654d560fed9802c4849::1744244876::res://.godot/exported/133200997/export-f2643c0988ce9a73690a5305b822cf9e-map.scn
+res://addons/simulation/Scenes/TemplateMenu.tscn::2a57ac9c6a9994923c232a2578e82a36::1744244876::res://.godot/exported/133200997/export-b4855d6e01f4dbc6849dc4ceb93e1f25-TemplateMenu.scn
+res://addons/simulation/Scenes/varContainer.tscn::1310edc8c3930e9e1be2b2a9cf43ef12::1744244876::res://.godot/exported/133200997/export-cfdc08c6315f6da7994b8891bc26212e-varContainer.scn
+res://addons/simulation/Scenes/varMenu.tscn::37e158991b16f537038871aad06580f4::1744244876::res://.godot/exported/133200997/export-eb758e1d5818448ff66a3f00646d42f1-varMenu.scn

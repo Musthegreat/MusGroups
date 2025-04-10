@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvkcs66smmkxv"]
 
-[ext_resource type="Script" path="res://addons/simulation/Scripts/InspectorMenu.gd" id="1_oe7ux"]
+[ext_resource type="Script" uid="uid://b7rwpajve6i1u" path="res://addons/simulation/Scripts/InspectorMenu.gd" id="1_oe7ux"]
 [ext_resource type="PackedScene" uid="uid://v7kcoj5yld1j" path="res://addons/simulation/Scenes/LogicContainer.tscn" id="2_l6h4j"]
 
 [node name="InspectorMenu" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder", "nodeName", "confirm")]

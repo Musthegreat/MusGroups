@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtdjf1gytyi73"]
 
-[ext_resource type="Script" path="res://addons/simulation/Scripts/logicMenu.gd" id="1_4aa3e"]
+[ext_resource type="Script" uid="uid://dei4o5ei70eus" path="res://addons/simulation/Scripts/logicMenu.gd" id="1_4aa3e"]
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_x25f2"]
 number_color = Color(0.573944, 0.755961, 0.84551, 1)

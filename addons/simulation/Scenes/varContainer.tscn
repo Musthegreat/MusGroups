@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxax74566hdtj"]
 
-[ext_resource type="Script" path="res://addons/simulation/Scripts/varContainer.gd" id="1_pby7e"]
+[ext_resource type="Script" uid="uid://dhr7m885g6vmj" path="res://addons/simulation/Scripts/varContainer.gd" id="1_pby7e"]
 
 [node name="VarContainer" type="HBoxContainer" node_paths=PackedStringArray("lineEdit", "optionButton", "delete")]
 offset_right = 347.0
@@ -25,6 +25,7 @@ layout_mode = 2
 selected = 0
 item_count = 5
 popup/item_0/text = "Select Type"
+popup/item_0/id = 0
 popup/item_1/text = "INT"
 popup/item_1/id = 1
 popup/item_2/text = "FLOAT"

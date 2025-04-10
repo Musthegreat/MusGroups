@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nui7u5yjgwba"]
 
-[ext_resource type="Script" path="res://addons/simulation/Scripts/varMenu.gd" id="1_axdb7"]
+[ext_resource type="Script" uid="uid://cj8hqhgjcdx17" path="res://addons/simulation/Scripts/varMenu.gd" id="1_axdb7"]
 
 [node name="Variables" type="Control" node_paths=PackedStringArray("saveUpdate", "newVairable", "vBox")]
 layout_mode = 3

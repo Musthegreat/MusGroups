@@ -2,6 +2,7 @@ extends GraphElement
 class_name groupVisual
 
 @export var label: Label
+@export var instanceLabel: Label
 
 var Instance: String
 var Name: String
@@ -18,7 +19,8 @@ func update(I) -> void:
 	if I == Instance:
 		var g = group.loadGroup(I, Singleton.identifier)
 		setName(g.Name)
-
+		instanceLabel.set_text(I)
+		
 func setName(name: String) -> void:
 	Name = name
 	label.set_text(name)

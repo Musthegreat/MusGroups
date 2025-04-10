@@ -23,9 +23,9 @@ func firstLoad() -> void:
 		print("made logic dir")
 		dir.make_dir_absolute("user://data/logic")
 		
-	if dir.change_dir("user://data/class") != OK:
-		print("made class dir")
-		dir.make_dir_absolute("user://data/class")
+	if dir.change_dir("user://data/templates") != OK:
+		print("made templates dir")
+		dir.make_dir_absolute("user://data/templates")
 	
 	if dir.change_dir("user://data/map") != OK:
 		print("made class map")

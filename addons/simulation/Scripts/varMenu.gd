@@ -33,14 +33,14 @@ func savePressed() -> void:
 		for child in vBox.get_children():
 			if child is varContainer:
 				g.Variables[child.varName] = child.out()
-		g.save()
+		g.save(Singleton.identifier)
 	else:
 		g = group.new()
 		g.Instance = Singleton.selectedGroup
 		for child in vBox.get_children():
 			if child is varContainer:
 				g.Variables[child.varName] = child.out()
-		g.save()
+		g.save(Singleton.identifier)
 
 func loadSequence(selectedGroup) -> void:
 	#enable the button once a node selected signal is recieved. because logically a node will always be selected after the first one.

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cah44a2s0pa2y"]
 
-[ext_resource type="Script" path="res://addons/simulation/Scripts/group.gd" id="1_72ubh"]
+[ext_resource type="Script" uid="uid://csbk68mrl0iqu" path="res://addons/simulation/Scripts/group.gd" id="1_72ubh"]
 
-[node name="GraphElement" type="GraphElement" node_paths=PackedStringArray("label")]
+[node name="GraphElement" type="GraphElement" node_paths=PackedStringArray("label", "instanceLabel")]
 offset_right = 110.0
 offset_bottom = 92.0
 mouse_filter = 0
@@ -10,11 +10,18 @@ position_offset = Vector2(50, 50)
 resizable = true
 script = ExtResource("1_72ubh")
 label = NodePath("MarginContainer/Label")
+instanceLabel = NodePath("Instance")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Instance" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Instance"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

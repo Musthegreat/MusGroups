@@ -4,7 +4,7 @@ class_name map
 @export var data: Dictionary
 
 func append(g) -> void:
-	data[g.instance] = {"POS": g.position_offset, "ID": g.instance}
+	data[g.Instance] = {"POS": g.position_offset, "ID": g.Instance}
 
 func save() -> void:
 	ResourceSaver.save(self, "user://data/map/map.tres")
