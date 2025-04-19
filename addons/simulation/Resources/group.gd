@@ -99,15 +99,15 @@ func setVar(varName: String, data: Variant) -> void:
 	Singleton.selectedGroup = Instance
 	Singleton.loadSelection()
 
-func addLogic(logicName: String) -> void:
-	Logics.append(logicName + ".tscn")
+func addLogic(logicInstance: String) -> void:
+	Logics.append(logicInstance)
 	
 	save(Singleton.identifier)
 	Singleton.selectedGroup = Instance
 	Singleton.loadSelection()
 
-func removeLogic(logicName: String) -> void:
-	Logics.remove_at(Logics.find(logicName))
+func removeLogic(logicInstance: String) -> void:
+	Logics.remove_at(Logics.find(logicInstance))
 	
 	save(Singleton.identifier)
 	Singleton.selectedGroup = Instance

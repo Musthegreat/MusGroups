@@ -16,3 +16,5 @@ res://addons/simulation/Resources/map.gd
 res://addons/simulation/Scripts/groupMenu.gd
 res://addons/simulation/Scripts/Singleton.gd
 res://addons/simulation/Scripts/map.gd
+res://addons/simulation/Scripts/logicMenu.gd
+res://addons/simulation/Scripts/LogicContainer.gd

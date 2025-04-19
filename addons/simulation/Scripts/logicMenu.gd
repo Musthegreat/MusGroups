@@ -27,7 +27,7 @@ func refreshList(selected: int = 0) -> void:
 	var dir = Singleton.loadLists("logic")
 	for i in dir:
 		var l: logic = logic.loadLogic(Singleton.fixFileName(i, ""), Singleton.identifier)
-		var index: int = logicList.add_item(l.Name)
+		var index: int = logicList.add_item(l.Name + " - " + l.Instance)
 		logicList.set_item_metadata(index, l.Instance)
 	
 	Name.set_text(logicList.get_item_text(selected))
@@ -56,7 +56,7 @@ func createLogic() -> void:
 	Name.set_text("logicName")
 	condition.set_text("")
 	
-	var index: int = logicList.add_item("logicName")
+	var index: int = logicList.add_item("logicName - " + l.Instance)
 	logicList.set_item_metadata(index, l.Instance)
 	logicList.select(index)
 
