@@ -2,18 +2,20 @@ extends Resource
 class_name logic
 
 @export var unsplitCode: String
+@export var Instance: String
+@export var Name: String
 
-func save(name, identifier) -> void:
-	if Singleton.checkIdentifier(identifier, "logic:save") != true:
+func save(Instance, identifier) -> void:
+	if Singleton.checkIdentifier(identifier, "logic:save()") != true:
 		return
 	
-	ResourceSaver.save(self, "user://data/logic/" + Singleton.fixFileName(name, ".tres"))
+	ResourceSaver.save(self, "user://"+Singleton.game +"/data/logic/" + Singleton.fixFileName(Instance, ".tres"))
 
-static func loadLogic(name, identifier) -> Resource:
-	if Singleton.checkIdentifier(identifier, "logic:loadLogic") != true:
+static func loadLogic(Instance, identifier) -> Resource:
+	if Singleton.checkIdentifier(identifier, "logic:loadLogic()") != true:
 		return
 	
-	if ResourceLoader.exists("user://data/logic/" + name):
-		return ResourceLoader.load("user://data/logic/" + name) as logic
+	if ResourceLoader.exists("user://"+Singleton.game +"/data/logic/" + Singleton.fixFileName(Instance, ".tres")):
+		return ResourceLoader.load("user://"+Singleton.game +"/data/logic/" + Singleton.fixFileName(Instance, ".tres")) as logic
 	else:
 		return null

@@ -16,7 +16,7 @@ func VariablePressed() -> void:
 	newContainer.restart.connect(onRestart)
 	newContainer.startIndex = 0
 	vBox.add_child(newContainer)
-	
+
 func onRestart(path, index) -> void:
 	get_node(path).queue_free()
 	
@@ -59,5 +59,6 @@ func loadSequence(selectedGroup) -> void:
 			newContainer.restart.connect(onRestart)
 			vBox.add_child(newContainer)
 			newContainer.loadVar(g.Variables[i])
+			
 	else:
 		print("whoops no vars")

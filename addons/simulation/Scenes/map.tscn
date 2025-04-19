@@ -54,6 +54,7 @@ size_flags_vertical = 8
 text = "New Group"
 
 [node name="Save All" type="Button" parent="MarginContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 text = "Save All

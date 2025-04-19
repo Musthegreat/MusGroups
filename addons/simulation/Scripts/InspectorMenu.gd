@@ -8,44 +8,51 @@ extends Control
 @export var confirm: Button
 
 func _ready() -> void:
-	newLogic.pressed.connect(logicAdd)
-	saveLogic.pressed.connect(logicSelected)
-	Singleton.loadSelected.connect(loadSelected)
-	confirm.pressed.connect(changeName)
+    newLogic.pressed.connect(logicAdd)
+    saveLogic.pressed.connect(logicSave)
+    Singleton.loadSelected.connect(logicLoad)
+    confirm.pressed.connect(changeName)
+    $BoxContainer/clone.pressed.connect(clone)
+    $BoxContainer/remove.pressed.connect(remove)
+
+func clone() -> void:
+    var g: group = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
+    g.clone()
+
+func remove() -> void:
+    Groups.removeByID(Singleton.selectedGroup)
 
 func changeName() -> void:
-	var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
-	g.Name = nodeName.get_text()
-	g.save(Singleton.identifier)
-	Singleton.loadSelection()
+    var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
+    g.Name = nodeName.get_text()
+    g.save(Singleton.identifier)
+    Singleton.loadSelection()
+    
+    Print.apiPrint("changed name of group", Singleton.identifier)
 
-func logicAdd(index: int = 0) -> void:
-	var addLogic: = logicContainer.instantiate()
-	logicHolder.add_child(addLogic)
-	addLogic.option.item_selected.connect(logicSelected)
-	
-	var dir: PackedStringArray = Singleton.loadLists("logic")
-	for i in dir.size():
-		addLogic.option.add_item(dir[i])
-	addLogic.option.select(index)
+func logicLoad(selectedGroup) -> void:
+    for child in logicHolder.get_children():
+        if child is HBoxContainer:
+            child.queue_free()
+    
+    var g = group.loadGroup(selectedGroup, Singleton.identifier)
+    nodeName.set_text(g.Name)
+    
+    for i in g.Logics:
+        logicAdd(i)
 
-func loadSelected(selectedGroup) -> void:
-	for child in logicHolder.get_children():
-		if child is HBoxContainer:
-			child.queue_free()
-	
-	var g = group.loadGroup(selectedGroup, Singleton.identifier)
-	nodeName.set_text(g.Name)
-	var l: PackedStringArray = Singleton.loadLists("logic")
-	for i in g.Logics:
-		logicAdd(l.find(i))
+func logicAdd(Instance: String = "") -> void:
+    var newLogicContainer: = logicContainer.instantiate()
+    logicHolder.add_child(newLogicContainer)
+    newLogicContainer.option.item_selected.connect(logicSave)
+    newLogicContainer.loadList(Instance)
 
-func logicSelected() -> void:
-	print("selected")
-	var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
-	g.Logics.clear()
-	for child in logicHolder.get_children():
-		if child is HBoxContainer:
-			print(child.option.get_item_text(child.option.selected))
-			g.Logics.append(child.option.get_item_text(child.option.selected))
-	g.save(Singleton.identifier)
+func logicSave() -> void:
+    var g = group.loadGroup(Singleton.selectedGroup, Singleton.identifier)
+    g.Logics.clear()
+    for child in logicHolder.get_children():
+        if child is HBoxContainer:
+            g.Logics.append(child.list[child.option.selected])
+            
+    g.save(Singleton.identifier)
+    Print.apiPrint("Saved logic", Singleton.identifier)

@@ -11,9 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_oe7ux")
-newLogic = NodePath("BoxContainer/logicHolder/VBoxContainer/newLogic")
-saveLogic = NodePath("BoxContainer/logicHolder/VBoxContainer/saveLogic")
-logicHolder = NodePath("BoxContainer/logicHolder/VBoxContainer")
+newLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/newLogic")
+saveLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/saveLogic")
+logicHolder = NodePath("BoxContainer/ScrollContainer/LogicHolder")
 logicContainer = ExtResource("2_l6h4j")
 nodeName = NodePath("BoxContainer/HBoxContainer/name")
 confirm = NodePath("BoxContainer/HBoxContainer/confirm")
@@ -41,43 +41,42 @@ alignment = 1
 layout_mode = 2
 text = "Confirm"
 
-[node name="CheckBox" type="CheckBox" parent="BoxContainer"]
-layout_mode = 2
-text = "Make public"
-
 [node name="HSeparator" type="HSeparator" parent="BoxContainer"]
 layout_mode = 2
 
 [node name="conditions" type="Label" parent="BoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 text = "Conditions
 "
 horizontal_alignment = 1
 
-[node name="logicHolder" type="ScrollContainer" parent="BoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/logicHolder"]
+[node name="LogicHolder" type="VBoxContainer" parent="BoxContainer/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="newLogic" type="Button" parent="BoxContainer/logicHolder/VBoxContainer"]
+[node name="newLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "New Logic"
 
-[node name="saveLogic" type="Button" parent="BoxContainer/logicHolder/VBoxContainer"]
+[node name="saveLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 text = "Save logic"
+
+[node name="Panel" type="Panel" parent="BoxContainer/ScrollContainer/LogicHolder"]
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="HSeparator2" type="HSeparator" parent="BoxContainer"]
 layout_mode = 2

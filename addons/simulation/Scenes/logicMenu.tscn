@@ -8,50 +8,73 @@ symbol_color = Color(0.743615, 0.753873, 0.782063, 1)
 function_color = Color(0.256869, 0.553465, 0.764987, 1)
 member_variable_color = Color(0.649364, 0.746298, 0.802176, 1)
 
-[node name="Logic" type="Control" node_paths=PackedStringArray("conditionContainer", "logicList", "saveButton", "Name")]
+[node name="Logic" type="Control" node_paths=PackedStringArray("conditionContainer", "logicList", "saveButton", "Name", "condition")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -781.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_4aa3e")
-conditionContainer = NodePath("VBoxContainer/ScrollContainer/conditionContainer")
-logicList = NodePath("VBoxContainer/logicList")
-saveButton = NodePath("VBoxContainer/SaveUpdate")
-Name = NodePath("VBoxContainer/logicName")
+conditionContainer = NodePath("HSplitContainer/Logic Editor/Logic Editor/ScrollContainer/conditionContainer")
+logicList = NodePath("HSplitContainer/Logic Editor/VBoxContainer/ItemList")
+saveButton = NodePath("HSplitContainer/Logic Editor/Logic Editor/HBoxContainer/SaveUpdate")
+Name = NodePath("HSplitContainer/Logic Editor/Logic Editor/logicName")
+condition = NodePath("HSplitContainer/Logic Editor/Logic Editor/ScrollContainer/conditionContainer/condition")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HSplitContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_vertical = 3
+current_tab = 0
+tabs_position = 1
 
-[node name="logicList" type="OptionButton" parent="VBoxContainer"]
+[node name="Logic Editor" type="HSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+split_offset = 150
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Logic Editor"]
 layout_mode = 2
 
-[node name="logicName" type="LineEdit" parent="VBoxContainer"]
+[node name="createLogicButton" type="Button" parent="HSplitContainer/Logic Editor/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Logic"
+
+[node name="ItemList" type="ItemList" parent="HSplitContainer/Logic Editor/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Logic Editor" type="VBoxContainer" parent="HSplitContainer/Logic Editor"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="logicName" type="LineEdit" parent="HSplitContainer/Logic Editor/Logic Editor"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Testing.tres"
 placeholder_text = "Enter logic name"
 alignment = 1
+editable = false
 select_all_on_focus = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/Logic Editor/Logic Editor"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="conditionContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+[node name="conditionContainer" type="VBoxContainer" parent="HSplitContainer/Logic Editor/Logic Editor/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="condition" type="CodeEdit" parent="VBoxContainer/ScrollContainer/conditionContainer"]
+[node name="condition" type="CodeEdit" parent="HSplitContainer/Logic Editor/Logic Editor/ScrollContainer/conditionContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 wrap_mode = 1
@@ -67,7 +90,16 @@ code_completion_enabled = true
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
 
-[node name="SaveUpdate" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/Logic Editor/Logic Editor"]
 layout_mode = 2
+
+[node name="SaveUpdate" type="Button" parent="HSplitContainer/Logic Editor/Logic Editor/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 8
 text = "Save or Update"
+
+[node name="Delete" type="Button" parent="HSplitContainer/Logic Editor/Logic Editor/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Delete logic"

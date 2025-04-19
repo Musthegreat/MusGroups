@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cj6qulykh45ru"]
+
+[node name="Documentation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WebView" type="WebView" parent="."]
+full_window_size = false
+url = "https://musnfriends.com"
+focused_when_created = false
+allow_interactions_without_focus = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1

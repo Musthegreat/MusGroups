@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbjsnac2v0wlf"]
+
+[ext_resource type="Script" uid="uid://13wlwlosxqhl" path="res://Scripts/mainMenu.gd" id="1_wut1r"]
+[ext_resource type="PackedScene" uid="uid://5o0kco08i1ev" path="res://gameContainer.tscn" id="2_83s16"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("gameName", "confirmNewGame", "center", "newGame")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wut1r")
+gameName = NodePath("CenterContainer/VBoxContainer/LineEdit")
+confirmNewGame = NodePath("CenterContainer/VBoxContainer/confirmNewGame")
+center = NodePath("CenterContainer")
+newGame = NodePath("VBoxContainer/HBoxContainer/newGame")
+gameContainer = ExtResource("2_83s16")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="logOut" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Log out"
+
+[node name="newGame" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create new game"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Vbox" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Game name"
+
+[node name="confirmNewGame" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Confirm and create"

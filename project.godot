@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="MusGroups"
-run/main_scene="res://editor.tscn"
+run/main_scene="uid://ccuor2ac6hd5t"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Singleton="*res://addons/simulation/Scripts/Singleton.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/god_plot/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/lua-gdextension/plugin.cfg")
 
 [input]
 

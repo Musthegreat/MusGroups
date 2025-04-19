@@ -8,6 +8,11 @@ static func apiErr(message: String, Identifier: String) -> void:
 	Singleton.console.add_text(message)
 	Singleton.console.pop()	
 
+static func apiPrint(message: String, Identifier: String) -> void:
+	Singleton.console.newline()
+	Singleton.console.add_text(message)
+	Singleton.console.pop()	
+
 static func printErr(console, message) -> void:
 	console.newline()
 	console.push_bold()

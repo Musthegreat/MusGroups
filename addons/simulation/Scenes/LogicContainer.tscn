@@ -14,3 +14,4 @@ text = "X"
 
 [node name="OptionButton" type="OptionButton" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
