@@ -9,9 +9,10 @@ var selectedGroupNode: groupVisual
 var identifier: String
 var logicList: Dictionary
 
-var inspector: Control
-var maps
+var groupMenu: Control
+var maps: Control
 var console: RichTextLabel
+var inspector: Control
 
 var collection: FirestoreCollection
 var data: FirestoreDocument

@@ -16,6 +16,22 @@ instanceLabel = NodePath("Instance")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Clone" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+"
+
+[node name="Delete" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x"
 
 [node name="Instance" type="Label" parent="."]
 layout_mode = 2
@@ -25,6 +41,7 @@ text = "Instance"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
@@ -36,3 +53,4 @@ visible = false
 custom_minimum_size = Vector2(0, 3.175)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2

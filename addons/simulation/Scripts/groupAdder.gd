@@ -24,9 +24,7 @@ func onLoad(g) -> void:
 func redundancyCheck(Instance) -> void:
 	for a in maps.Graph.get_children():
 		if a is groupVisual:
-			print("YES")
 			if Instance == a.Instance:
-				print("YES")
 				queue_free()
 
 func add() -> void:
@@ -34,7 +32,5 @@ func add() -> void:
 	queue_free()
 
 func delete() -> void:
-	uponDelete.emit()
-	
 	DirAccess.remove_absolute("user://"+Singleton.game +"/data/groups/" + Instance + ".tres")
-	queue_free()
+	uponDelete.emit()

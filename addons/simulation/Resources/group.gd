@@ -135,5 +135,5 @@ func clone() -> void:
 	
 	g.update(I)
 	
-	currentMap.allSave()
+	currentMap.allSave(Vector2(0,0), Vector2(0,0))
 #endregion

@@ -57,7 +57,8 @@ func mapLoad() -> void:
 			g.position_offset = m.data[i]["POS"]
 			
 			g.update(m.data[i]["ID"])
-	Singleton.inspector.update()
+			g.selection.hide()
+	Singleton.groupMenu.update()
 
 func groupAdd() -> void:
 	# r is resource, I is instance ID

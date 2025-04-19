@@ -8,8 +8,6 @@ func append(g) -> void:
 
 func save() -> void:
 	ResourceSaver.save(self, "user://"+Singleton.game +"/data/map/map.tres")
-	
-	Print.apiPrint("Saved map", Singleton.identifier)
 
 static func loadMap() -> Resource:
 	if ResourceLoader.exists("user://"+Singleton.game +"/data/map/map.tres"):
