@@ -1,4 +1,5 @@
 extends HBoxContainer
+signal openLogic
 
 @export var delete: Button
 @export var option: OptionButton
@@ -7,6 +8,7 @@ var list: Array
 
 func _ready() -> void:
 	delete.pressed.connect(pressedDelete)
+	%Open.pressed.connect(func(): openLogic.emit(list[option.get_selected_id()]))
 
 func loadList(Instance: String = "") -> void:
 	var dir = Singleton.loadLists("logic")

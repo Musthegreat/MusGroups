@@ -3,8 +3,8 @@ class_name map
 
 @export var data: Dictionary
 
-func append(g) -> void:
-	data[g.Instance] = {"POS": g.position_offset, "ID": g.Instance}
+func append(G) -> void:
+	data[G.Instance] = {"POS": G.position_offset, "ID": G.Instance}
 
 func save() -> void:
 	ResourceSaver.save(self, "user://"+Singleton.game +"/data/map/map.tres")

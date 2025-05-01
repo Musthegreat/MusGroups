@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b7rwpajve6i1u" path="res://addons/simulation/Scripts/InspectorMenu.gd" id="1_oe7ux"]
 [ext_resource type="PackedScene" uid="uid://v7kcoj5yld1j" path="res://addons/simulation/Scenes/LogicContainer.tscn" id="2_l6h4j"]
 
-[node name="InspectorMenu" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder", "nodeName", "confirm")]
+[node name="Inspector" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder", "nodeName", "confirm")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +40,16 @@ alignment = 1
 [node name="confirm" type="Button" parent="BoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Confirm"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="componentMenu" type="VBoxContainer" parent="BoxContainer/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="HSeparator" type="HSeparator" parent="BoxContainer"]
 layout_mode = 2

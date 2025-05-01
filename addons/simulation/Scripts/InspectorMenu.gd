@@ -1,4 +1,5 @@
 extends Control
+signal openLogic
 
 @export var newLogic: Button
 @export var saveLogic: Button
@@ -33,13 +34,19 @@ func changeName() -> void:
 	Print.apiPrint("changed name of group", Singleton.identifier)
 
 func logicLoad(selectedGroup) -> void:
+	for child in %componentMenu.get_children():
+		child.queue_free()
+	
 	for child in logicHolder.get_children():
 		if child is HBoxContainer:
 			child.queue_free()
 	
 	var g = group.loadGroup(selectedGroup, Singleton.identifier)
 	nodeName.set_text(g.Name)
-	
+	for i in g.Menu:
+		var menu = i.instantiate()
+		%componentMenu.add_child(menu)
+		
 	for i in g.Logics:
 		logicAdd(i)
 
@@ -47,6 +54,7 @@ func logicAdd(Instance: String = "") -> void:
 	var newLogicContainer: = logicContainer.instantiate()
 	logicHolder.add_child(newLogicContainer)
 	newLogicContainer.option.item_selected.connect(logicSave)
+	newLogicContainer.openLogic.connect(func(Instance): openLogic.emit(Instance))
 	newLogicContainer.loadList(Instance)
 
 func logicSave() -> void:

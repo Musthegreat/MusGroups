@@ -11,18 +11,26 @@ config_version=5
 [application]
 
 config/name="MusGroups"
-run/main_scene="uid://ccuor2ac6hd5t"
+run/main_scene="uid://dhscigh52b2pm"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Singleton="*res://addons/simulation/Scripts/Singleton.gd"
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+MusGroups="*res://addons/simulation/Scripts/MusGroups.gd"
+EOSGRuntime="*res://addons/epic-online-services-godot/runtime.gd"
+HPlatform="*res://addons/epic-online-services-godot/heos/hplatform.gd"
+HAuth="*res://addons/epic-online-services-godot/heos/hauth.gd"
+HAchievements="*res://addons/epic-online-services-godot/heos/hachievements.gd"
+HFriends="*res://addons/epic-online-services-godot/heos/hfriends.gd"
+HStats="*res://addons/epic-online-services-godot/heos/hstats.gd"
+HLeaderboards="*res://addons/epic-online-services-godot/heos/hleaderboards.gd"
+HLobbies="*res://addons/epic-online-services-godot/heos/hlobbies.gd"
+HP2P="*res://addons/epic-online-services-godot/heos/hp2p.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/god_plot/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/lua-gdextension/plugin.cfg")
+enabled=PackedStringArray("res://addons/epic-online-services-godot/plugin.cfg", "res://addons/god_plot/plugin.cfg", "res://addons/lua-gdextension/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
 
 [input]
 

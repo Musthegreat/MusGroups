@@ -10,10 +10,10 @@ var Name: String
 var Group: group
 
 func setInstance(i: String) -> void:
-	Group = group.loadGroup(Instance, Singleton.identifier)
+	Group = group.loadGroup(Instance, MusGroups.identifier)
 
 func _ready() -> void:
-	Singleton.loadSelected.connect(update)
+	MusGroups.loadSelected.connect(update)
 	%Clone.pressed.connect(clone)
 	%Delete.pressed.connect(delete)
 
@@ -21,11 +21,12 @@ func update(I) -> void:
 	if I == Instance:
 		selection.show()
 		
-		var g = group.loadGroup(I, Singleton.identifier)
+		var g = group.loadGroup(I, MusGroups.identifier)
 		if g == null:
 			return
-		
+			
 		setName(g.Name)
+		%Type.set_text("(" + g.TypeName + ")")
 		instanceLabel.set_text(I)
 	else:
 		selection.hide()
@@ -39,4 +40,7 @@ func clone() -> void:
 
 func delete() -> void:
 	queue_free()
-	Singleton.maps.allSave(Vector2(0,0),Vector2(0,0))
+	var dir: map = map.loadMap()
+	dir.data.erase(Instance)
+	dir.save()
+	MusGroups.maps.allSave(Vector2(0,0),Vector2(0,0))

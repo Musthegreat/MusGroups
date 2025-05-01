@@ -2,43 +2,49 @@ extends Resource
 class_name group
 
 @export var Name: String
+@export var TypeName: String = "group"
 @export var Instance: String
 @export var Variables: Dictionary
 @export var Logics: Array
 
+var Menu: Array = [preload("res://addons/simulation/MusAPI/Basic/Components/empty/emtpy.tscn")]
+
+var context = "server"
 func save(identifier) -> void:
-	if Singleton.checkIdentifier(identifier, "loadGroup") != true:
-		Print.printErr(Singleton.console, "Failed to load group with ID of " + Instance)
+	
+	if MusGroups.checkIdentifier(identifier, "loadGroup") != true:
+		Print.printErr(MusGroups.console, "Failed to load group with ID of " + Instance)
 		return
 	
-	#var collection: FirestoreCollection = Firebase.Firestore.collection(Singleton.game)
-	#var document: FirestoreDocument = Firebase.
-	#var task: FirestoreTask = collection.update("data")
-	
-	ResourceSaver.save(self, "user://"+Singleton.game +"/data/groups/" + Singleton.fixFileName(Instance, ".tres"))
+	ResourceSaver.save(self, "user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
 
 static func loadGroup(Instance: String, identifier: String) -> Resource:
-	if Singleton.checkIdentifier(identifier, "loadGroup") != true:
-		Print.printErr(Singleton.console, "Failed to load group with ID of " + Instance)
+	var context = "server"
+	
+	if MusGroups.checkIdentifier(identifier, "loadGroup") != true:
+		Print.printErr(MusGroups.console, "Failed to load group with ID of " + Instance)
 		return
 		
-	if ResourceLoader.exists("user://"+Singleton.game +"/data/groups/" + Singleton.fixFileName(Instance, ".tres")):
-		return ResourceLoader.load("user://"+Singleton.game +"/data/groups/" + Singleton.fixFileName(Instance, ".tres")) as group
+	if ResourceLoader.exists("user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres")):
+		return ResourceLoader.load("user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
 	else:
 		return null
 
 #region MusAPI
+static func run(Instance: String) -> void:
+	MusGroups.runQeueue.append(Instance)
+
 static func getGroup(Instance: String) -> group:
-	return group.loadGroup(Instance, Singleton.identifier)
+	return group.loadGroup(Instance, MusGroups.identifier)
 
 func getVar(varName: String):
 	if Variables.has(varName):
-		if Variables[varName]["Type"] == "Array"  or "Dictionary":
+		if Variables[varName]["Type"] == "Array" or Variables[varName]["Type"] == "Dictionary":
 			return str_to_var(Variables[varName]["Data"])
 		else:
 			return Variables[varName]["Data"]
 	else:
-		Print.apiErr("Variable of name " + varName + " not found in group " + Instance, Singleton.identifier)
+		Print.apiErr("Variable of name " + varName + " not found in group " + Instance, MusGroups.identifier)
 
 func getVarType(varName: String):
 	return Variables[varName]["Type"]
@@ -69,55 +75,42 @@ func setVar(varName: String, data: Variant) -> void:
 					else:
 						Error = true
 				"Array":
-					if data is String:
-						Variables[a]["Data"] = data
+					if data is Array:
+						Variables[a]["Data"] = var_to_str(data)
 					else:
 						Error = true
 				"Dictionary":
-					if data is String:
-						Variables[a]["Data"] = data
+					if data is Dictionary:
+						Variables[a]["Data"] = var_to_str(data)
 					else:
 						Error = true
 			
 			if Error == true:
-				Print.apiErr("Error setting variable, the type provided does not match type of variable " + varName + " which is " + type_string(typeof(Variables[a]["Data"])), Singleton.identifier)
-		else:
-			pass
-			#match typeof(data):
-				#TYPE_INT:
-					#Variables[varName] = {"Type": type_string(TYPE_INT), "Data": data, "Name": varName}
-				#TYPE_FLOAT:
-					#Variables[varName] = {"Type": type_string(TYPE_FLOAT), "Data": data, "Name": varName}
-				#TYPE_STRING:
-					#Variables[varName] = {"Type": type_string(TYPE_STRING), "Data": data, "Name": varName}
-				#TYPE_BOOL:
-					#Variables[varName] = {"Type": type_string(TYPE_BOOL), "Data": var_to_str(data), "Name": varName}
-				#TYPE_ARRAY:
-					#Variables[varName] = {"Type": type_string(TYPE_ARRAY), "Data": data, "Name": varName}
-		
-	save(Singleton.identifier)
-	Singleton.selectedGroup = Instance
-	Singleton.loadSelection()
+				Print.apiErr("Error setting variable, the type provided does not match type of variable " + varName + " which is " + type_string(typeof(Variables[a]["Data"])), MusGroups.identifier)
+				
+	save(MusGroups.identifier)
+	MusGroups.selectedGroup = Instance
+	MusGroups.loadSelection()
 
-func addLogic(logicInstance: String) -> void:
-	Logics.append(logicInstance)
-	
-	save(Singleton.identifier)
-	Singleton.selectedGroup = Instance
-	Singleton.loadSelection()
-
-func removeLogic(logicInstance: String) -> void:
-	Logics.remove_at(Logics.find(logicInstance))
-	
-	save(Singleton.identifier)
-	Singleton.selectedGroup = Instance
-	Singleton.loadSelection()
+#func addLogic(logicInstance: String) -> void:
+	#Logics.append(logicInstance)
+	#
+	#save(MusGroups.identifier)
+	#MusGroups.selectedGroup = Instance
+	#MusGroups.loadSelection()
+#
+#func removeLogic(logicInstance: String) -> void:
+	#Logics.remove_at(Logics.find(logicInstance))
+	#
+	#save(MusGroups.identifier)
+	#MusGroups.selectedGroup = Instance
+	#MusGroups.loadSelection()
 
 func clone() -> void:
-	var currentMap = Singleton.maps
+	var currentMap = MusGroups.maps
 	
 	# r is resource, I is instance ID
-	var I: String = Singleton.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
+	var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
 	
 	var g = currentMap.Group.instantiate()
 	g.dragged.connect(currentMap.allSave)
@@ -131,7 +124,7 @@ func clone() -> void:
 	r.Logics = Logics
 	r.Variables = Variables
 	
-	r.save(Singleton.identifier)
+	r.save(MusGroups.identifier)
 	
 	g.update(I)
 	

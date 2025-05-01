@@ -1,1 +1,4 @@
-*.env
+addons/epic-online-services-godot
+addons/god_plot
+addons/godot_wry
+addons/papershot

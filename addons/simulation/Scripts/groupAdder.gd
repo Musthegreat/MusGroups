@@ -32,5 +32,6 @@ func add() -> void:
 	queue_free()
 
 func delete() -> void:
-	DirAccess.remove_absolute("user://"+Singleton.game +"/data/groups/" + Instance + ".tres")
+	print(MusGroups.game)
+	MusGroups.removeFile(Instance + ".tres", "groups")
 	uponDelete.emit()

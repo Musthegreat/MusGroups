@@ -15,38 +15,36 @@ signal savedMap
 var lua: LuaState = LuaState.new()
 var API: LuaTable = lua.create_table()
 
-func hookAPI() -> void:
-	API["This"] = null
-	API["Graph"] = Graph
-	API["Groups"] = Groups
-	API["pront"] = Print.luaPrint
-
 func _ready() -> void:
-	Singleton.game = "bust city"
-	Singleton.identifier = Singleton.generateWord("bus", 5)
-	Singleton.console = console
-	Singleton.maps = self
+	MusGroups.game = "bust city"
+	MusGroups.identifier = MusGroups.generateWord("bus", 5)
 	
-	lua.open_libraries(LuaState.GODOT_VARIANT)
-	hookAPI()
+	MusGroups.console = console
+	MusGroups.maps = self
 	
 	#connect to signals relavent to map
 	addGroup.button_down.connect(groupAdd)
 	saveAll.button_down.connect(allSave)
-	stepSimulation.button_down.connect(main)
+	stepSimulation.button_down.connect(sendToServer)
 	
 	mapLoad()
 
 func selectGroup(g) -> void:
-	Singleton.selectedGroupNode = g
-	Singleton.selectedGroup = g.Instance
-	Singleton.loadSelection()
+	MusGroups.selectedGroup = g.Instance
+	MusGroups.loadSelection()
 
 func mapLoad() -> void:
-	print(Singleton.game)
+	print(MusGroups.game)
 	var m = map.loadMap()
 	if m == null:
 		print("whoops no map")
+		var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
+		var t: timer = timer.new()
+		t.Instance = I
+		t.Name = "Timer"
+		t.save(MusGroups.identifier)
+		allSave(Vector2(0,0), Vector2(0,0))
+		mapLoad()
 	else:
 		for i in m.data:
 			var g = Group.instantiate()
@@ -58,55 +56,64 @@ func mapLoad() -> void:
 			
 			g.update(m.data[i]["ID"])
 			g.selection.hide()
-	Singleton.groupMenu.update()
+	MusGroups.groupMenu.update()
 
 func groupAdd() -> void:
 	# r is resource, I is instance ID
-	var I: String = Singleton.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
+	var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
 	
-	var g = Group.instantiate()
-	g.dragged.connect(allSave)
-	Graph.add_child(g)
-	g.node_selected.connect(selectGroup.bind(g))
+	var G = Group.instantiate()
+	G.dragged.connect(allSave)
+	Graph.add_child(G)
+	G.node_selected.connect(selectGroup.bind(G))
+	G.Instance = I
+	
+	var g = group.new()
 	g.Instance = I
-	
-	var r = group.new()
-	r.Instance = I
-	r.Name = "group"
-	r.save(Singleton.identifier)
+	g.Name = "group"
+	g.save(MusGroups.identifier)
 	
 	allSave(Vector2(0,0), Vector2(0,0))
 
 func groupAddExisting(Instance) -> void:
-	var r: group = group.loadGroup(Instance, Singleton.identifier)
-	print(r)
-	var g = Group.instantiate()
-	g.dragged.connect(allSave)
-	Graph.add_child(g)
-	g.node_selected.connect(selectGroup.bind(g))
-	g.Instance = Instance
-	g.update(Instance)
+	var G = Group.instantiate()
+	G.dragged.connect(allSave)
+	Graph.add_child(G)
+	G.node_selected.connect(selectGroup.bind(G))
+	G.Instance = Instance
+	G.update(Instance)
+	
+	allSave(Vector2(0,0), Vector2(0,0))
+
+func componentAdd(type: GDScript, typeName: String) -> void:
+	# r is resource, I is instance ID
+	var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
+	
+	var G = Group.instantiate()
+	Graph.add_child(G)
+	G.dragged.connect(allSave)
+	G.node_selected.connect(selectGroup.bind(G))
+	G.Instance = I
+	
+	var g = type.new()
+	g.Instance = I
+	g.Name = typeName
+	g.TypeName = typeName
+	g.save(MusGroups.identifier)
+	
+	G.update(I)
 	
 	allSave(Vector2(0,0), Vector2(0,0))
 
 func allSave(from, to) -> void:
 	var m = map.new()
-	for g in Graph.get_children():
-		if g is groupVisual:
-			m.append(g)
+	for G in Graph.get_children():
+		if G is groupVisual:
+			m.append(G)
 	m.save()
 	savedMap.emit()
 	
 #endregion
-func main() -> void:
-	#load each group in the list
-	for a in Graph.get_children():
-		if a is groupVisual:
-			var g: group = group.loadGroup(a.Instance, Singleton.identifier)
-			#load each logic in the group
-			for b in g.Logics:
-					var l: logic = logic.loadLogic(b, Singleton.identifier)
-					API["This"] = g
-					var result = lua.do_string(l.unsplitCode, "", API)
-					if result is LuaError:
-						Print.printErr(console, result)
+
+func sendToServer() -> void:
+	pass

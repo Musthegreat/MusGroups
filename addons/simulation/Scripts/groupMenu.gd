@@ -8,18 +8,18 @@ extends Control
 func _ready() -> void:
 	button.pressed.connect(refresh)
 	maps.savedMap.connect(refresh)
-	Singleton.game = "bust city"
-	Singleton.groupMenu = self
+	MusGroups.game = "bust city"
+	MusGroups.groupMenu = self
 
 func update() -> void:
-	var groups = Singleton.loadLists("groups")
+	var groups = MusGroups.loadLists("groups")
 	
 	for i in groups: 
 		var new = groupAdder.instantiate()
 		container.add_child(new)
 		new.uponDelete.connect(refresh)
 		
-		var g: group = group.loadGroup(Singleton.fixFileName(i, ""), Singleton.identifier)
+		var g = group.loadGroup(MusGroups.fixFileName(i, ""), MusGroups.identifier)
 		new.maps = maps
 		new.onLoad(g)
 

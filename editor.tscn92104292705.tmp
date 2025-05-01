@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhscigh52b2pm"]
+
+[ext_resource type="PackedScene" uid="uid://cv4ksjiw2tk2e" path="res://Scenes/game.tscn" id="1_a7iym"]
+[ext_resource type="Script" uid="uid://bq6d6srycfe3m" path="res://Scripts/editor.gd" id="1_wkuwf"]
+[ext_resource type="PackedScene" uid="uid://dhwfu5jucqjbs" path="res://Scenes/editorComponent.tscn" id="2_7wlcy"]
+[ext_resource type="PackedScene" uid="uid://cjsj1w7benkex" path="res://addons/simulation/Scenes/Menus/logicMenu.tscn" id="4_7wlcy"]
+
+[node name="Editor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_wkuwf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="Game" parent="TabContainer" instance=ExtResource("1_a7iym")]
+layout_mode = 2
+
+[node name="Editor" type="TabContainer" parent="TabContainer"]
+layout_mode = 2
+current_tab = 0
+tabs_position = 1
+metadata/_tab_index = 1
+
+[node name="Server" parent="TabContainer/Editor" instance=ExtResource("2_7wlcy")]
+layout_mode = 2
+
+[node name="Logic" type="TabContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+current_tab = 0
+tabs_position = 1
+metadata/_tab_index = 2
+
+[node name="Editor" parent="TabContainer/Logic" instance=ExtResource("4_7wlcy")]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
