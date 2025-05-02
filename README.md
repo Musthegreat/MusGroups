@@ -1,4 +1,4 @@
-### This project is a tool made in the Godot engine.
+## This project is a tool made in the Godot engine.
 
 The version used for developing this tool is **Godot Version 4.4.1** but this project was started in version 4.3.
 
