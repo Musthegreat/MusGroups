@@ -1,5 +1,14 @@
-The identifier peramter in some functions is there to validate if the person accessing the function is operating withing godot
-were they will have access to the identifier value stored in the singleton.
+### This project is a tool made in the Godot engine.
 
-The api currently has a GroupSearch class, a GroupModify class and a Print class which can be used to extend scripting 
-functionality.
+The version used for developing this tool is **Godot Version 4.4.1** but this project was started in version 4.3.
+
+This tool relies heavily on third-party plugins for some features, these plugins are as follows:
+
+* [Lua GDExtension](https://github.com/gilzoide/lua-gdextension) (verion 0.2.0)
+* [Epic Online Services Godot](https://github.com/3ddelano/epic-online-services-godot) (version 2.1.7)
+* [GodPlot](https://github.com/onegm/GodPlot) (version 1.3)
+* [Godot WRY](https://github.com/doceazedo/godot_wry) (version 0.0.6)
+
+All these plugins are available to download and install directly within Godot's asset library 
+
+[Here](https://musthegreat94.itch.io/musgroups) is a link to the tool's release page (itchio). 

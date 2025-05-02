@@ -1,10 +1,5 @@
-res://addons/simulation/Scenes/Containers/groupAdder.tscn
 res://Scenes/editorComponent.tscn
 res://addons/simulation/Scenes/Menus/logicMenu.tscn
 res://addons/simulation/Scenes/map.tscn
 res://Scenes/game.tscn
 res://addons/simulation/MusAPI/Basic/Components/timer/timerInspector.tscn
-res://addons/simulation/Scenes/Containers/LogicContainer.tscn
-res://addons/simulation/Scenes/Menus/componentMenu.tscn
-res://addons/simulation/Scenes/Containers/componentContainer.tscn
-res://addons/simulation/Scenes/group.tscn
