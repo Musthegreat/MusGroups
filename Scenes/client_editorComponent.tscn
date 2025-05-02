@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqir7lpdfvbvi"]
+
+[ext_resource type="PackedScene" uid="uid://cplg5wcu3fbtr" path="res://addons/simulation/Scenes/Client/Menus/client_groupMenu.tscn" id="1_v3str"]
+[ext_resource type="PackedScene" uid="uid://cfgu3ialy5wfh" path="res://addons/simulation/Scenes/Client/client_map.tscn" id="2_pg5oi"]
+[ext_resource type="PackedScene" uid="uid://dvkcs66smmkxv" path="res://addons/simulation/Scenes/Client/Menus/client_InspectorMenu.tscn" id="3_5qkrm"]
+[ext_resource type="PackedScene" uid="uid://nui7u5yjgwba" path="res://addons/simulation/Scenes/Client/Menus/client_varMenu.tscn" id="4_sxmmi"]
+[ext_resource type="PackedScene" uid="uid://e28vh21ekhb6" path="res://addons/simulation/Scenes/Client/Menus/client_settingsMenu.tscn" id="5_3h3s6"]
+
+[sub_resource type="SystemFont" id="SystemFont_ivafm"]
+font_names = PackedStringArray("Monospace")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdh3f"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="Server" type="HSplitContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = -435
+metadata/_tab_index = 0
+
+[node name="GroupMenu" parent="." instance=ExtResource("1_v3str")]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 100
+
+[node name="VSplitContainer" type="VSplitContainer" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 100
+
+[node name="Map" parent="HFlowContainer/VSplitContainer" instance=ExtResource("2_pg5oi")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_colors/selection_color = Color(0.325441, 0.325441, 0.325441, 1)
+theme_override_fonts/mono_font = SubResource("SystemFont_ivafm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kdh3f")
+bbcode_enabled = true
+text = "MusGroups v0.1.42 pre-Alpha - visit \"https://discord.gg/XxwsTkY2p7\" for support."
+scroll_following = true
+threaded = true
+selection_enabled = true
+
+[node name="Control" type="Control" parent="HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="HFlowContainer/Control"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+current_tab = 1
+
+[node name="InspectorMenu" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("3_5qkrm")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Variables" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("4_sxmmi")]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Settings" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("5_3h3s6")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

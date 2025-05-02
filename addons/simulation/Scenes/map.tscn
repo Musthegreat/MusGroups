@@ -64,4 +64,4 @@ text = "Save All
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "Step Simulation"
+text = "Update"

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdg7h03c253s4"]
+
+[ext_resource type="Script" uid="uid://bd87t6k1hkk37" path="res://addons/simulation/MusAPI/Basic/Scenes/Scripts/graphContainer.gd" id="1_cwhf1"]
+[ext_resource type="Script" uid="uid://bkqocho0dblks" path="res://addons/god_plot/tools/graphs/graph_2d.gd" id="1_esjoj"]
+
+[node name="GraphContainer" type="GraphElement"]
+script = ExtResource("1_cwhf1")
+
+[node name="Graph2D" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("1_esjoj")
+metadata/_custom_type_script = "uid://bkqocho0dblks"

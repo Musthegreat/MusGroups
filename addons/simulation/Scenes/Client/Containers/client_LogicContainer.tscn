@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://djvdealx1sgma"]
+
+[ext_resource type="Script" uid="uid://din3cto7oh0bw" path="res://addons/simulation/Scripts/Client/Containers/client_LogicContainer.gd" id="1_b6skl"]
+
+[node name="LogicContainer" type="HBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_b6skl")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+text = "X"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3

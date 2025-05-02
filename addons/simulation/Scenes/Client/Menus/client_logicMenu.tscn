@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtdjf1gytyi73"]
+
+[ext_resource type="Script" uid="uid://bir6lo6p58tor" path="res://addons/simulation/Scripts/Client/Menus/client_logicMenu.gd" id="1_ao312"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_x25f2"]
+number_color = Color(0.573944, 0.755961, 0.84551, 1)
+symbol_color = Color(0.743615, 0.753873, 0.782063, 1)
+function_color = Color(0.256869, 0.553465, 0.764987, 1)
+member_variable_color = Color(0.649364, 0.746298, 0.802176, 1)
+
+[node name="Logic" type="Control" node_paths=PackedStringArray("conditionContainer", "logicList", "saveButton", "Name", "condition")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ao312")
+conditionContainer = NodePath("Logic Editor/Logic Editor/ScrollContainer/conditionContainer")
+logicList = NodePath("Logic Editor/VBoxContainer/ItemList")
+saveButton = NodePath("Logic Editor/Logic Editor/HBoxContainer/SaveUpdate")
+Name = NodePath("Logic Editor/Logic Editor/logicName")
+condition = NodePath("Logic Editor/Logic Editor/ScrollContainer/conditionContainer/condition")
+
+[node name="Logic Editor" type="HSplitContainer" parent="."]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -31.0
+split_offset = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Logic Editor"]
+layout_mode = 2
+
+[node name="createLogicButton" type="Button" parent="Logic Editor/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "New Logic"
+
+[node name="ItemList" type="ItemList" parent="Logic Editor/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="babyMode" type="CheckButton" parent="Logic Editor/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Baby Mode"
+
+[node name="Logic Editor" type="VBoxContainer" parent="Logic Editor"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="logicName" type="LineEdit" parent="Logic Editor/Logic Editor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Testing.tres"
+placeholder_text = "Enter logic name"
+alignment = 1
+editable = false
+select_all_on_focus = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Logic Editor/Logic Editor"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="conditionContainer" type="VBoxContainer" parent="Logic Editor/Logic Editor/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="condition" type="CodeEdit" parent="Logic Editor/Logic Editor/ScrollContainer/conditionContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+wrap_mode = 1
+caret_blink = true
+syntax_highlighter = SubResource("CodeHighlighter_x25f2")
+draw_control_chars = true
+symbol_lookup_on_click = true
+line_folding = true
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Logic Editor/Logic Editor"]
+layout_mode = 2
+
+[node name="SaveUpdate" type="Button" parent="Logic Editor/Logic Editor/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Save or Update"
+
+[node name="Delete" type="Button" parent="Logic Editor/Logic Editor/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Delete logic"

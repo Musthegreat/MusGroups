@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmvo63vfdsks5"]
+
+[ext_resource type="Script" uid="uid://csbk68mrl0iqu" path="res://addons/simulation/Scripts/group.gd" id="1_a2ikx"]
+
+[node name="GraphElement" type="GraphElement" node_paths=PackedStringArray("label", "instanceLabel")]
+offset_right = 110.0
+offset_bottom = 92.0
+mouse_filter = 0
+position_offset = Vector2(50, 50)
+resizable = true
+script = ExtResource("1_a2ikx")
+label = NodePath("MarginContainer/Label")
+instanceLabel = NodePath("Instance")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Clone" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+"
+
+[node name="Delete" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x"
+
+[node name="Instance" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Instance"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "group"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 3.175)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2

@@ -1,0 +1,108 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbrd0e5gmyhg"]
+
+[ext_resource type="Script" uid="uid://b7rwpajve6i1u" path="res://addons/simulation/Scripts/Menus/InspectorMenu.gd" id="1_83jyh"]
+[ext_resource type="PackedScene" uid="uid://v7kcoj5yld1j" path="res://addons/simulation/Scenes/Containers/LogicContainer.tscn" id="2_s1i0a"]
+
+[node name="Inspector" type="Control" node_paths=PackedStringArray("newLogic", "saveLogic", "logicHolder", "nodeName", "confirm")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_83jyh")
+newLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/newLogic")
+saveLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/saveLogic")
+logicHolder = NodePath("BoxContainer/ScrollContainer/LogicHolder")
+logicContainer = ExtResource("2_s1i0a")
+nodeName = NodePath("BoxContainer/HBoxContainer/name")
+confirm = NodePath("BoxContainer/HBoxContainer/confirm")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="name" type="LineEdit" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Node Name"
+alignment = 1
+
+[node name="confirm" type="Button" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="componentMenu" type="VBoxContainer" parent="BoxContainer/ScrollContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="conditions" type="Label" parent="BoxContainer"]
+layout_mode = 2
+text = "Conditions
+"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="LogicHolder" type="VBoxContainer" parent="BoxContainer/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="newLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "New Logic"
+
+[node name="saveLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Save logic"
+
+[node name="Panel" type="Panel" parent="BoxContainer/ScrollContainer/LogicHolder"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HSeparator2" type="HSeparator" parent="BoxContainer"]
+layout_mode = 2
+
+[node name="save" type="Button" parent="BoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+text = "Save node"
+
+[node name="clone" type="Button" parent="BoxContainer"]
+layout_mode = 2
+text = "Clone group"
+
+[node name="remove" type="Button" parent="BoxContainer"]
+layout_mode = 2
+text = "Remove group
+"

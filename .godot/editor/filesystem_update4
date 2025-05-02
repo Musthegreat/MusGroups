@@ -1,5 +1,2 @@
 res://Scenes/editorComponent.tscn
-res://addons/simulation/Scenes/Menus/logicMenu.tscn
-res://addons/simulation/Scenes/map.tscn
-res://Scenes/game.tscn
-res://addons/simulation/MusAPI/Basic/Components/timer/timerInspector.tscn
+res://addons/simulation/MusAPI/Basic/Graphs.gd

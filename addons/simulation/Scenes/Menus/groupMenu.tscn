@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://4y7mahd58sbf"]
+
+[ext_resource type="Script" uid="uid://iydmritrdn8v" path="res://addons/simulation/Scripts/Menus/groupMenu.gd" id="1_5h3b7"]
+[ext_resource type="PackedScene" uid="uid://iygjm4sskdef" path="res://addons/simulation/Scenes/Containers/groupAdder.tscn" id="2_wd6ti"]
+
+[node name="GroupMenu" type="Control" node_paths=PackedStringArray("button", "container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_5h3b7")
+button = NodePath("VBoxContainer/ScrollContainer/VBoxContainer/Button")
+container = NodePath("VBoxContainer/ScrollContainer/VBoxContainer")
+groupAdder = ExtResource("2_wd6ti")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Refresh"
