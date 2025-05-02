@@ -1,4 +1,4 @@
-## This project is a tool made in the Godot engine.
+## This project is a tool built to make games faster in the Godot engine.
 
 The version used for developing this tool is **Godot Version 4.4.1** but this project was started in version 4.3.
 
@@ -9,6 +9,6 @@ This tool relies heavily on third-party plugins for some features, these plugins
 * [GodPlot](https://github.com/onegm/GodPlot) (version 1.3)
 * [Godot WRY](https://github.com/doceazedo/godot_wry) (version 0.0.6)
 
-All these plugins are available to download and install directly within Godot's asset library 
+All these plugins are available to download and install directly within Godot's asset library and are **not** included in this repository.
 
 [Here](https://musthegreat94.itch.io/musgroups) is a link to the tool's release page (itchio). 
