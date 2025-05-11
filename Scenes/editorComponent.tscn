@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhwfu5jucqjbs"]
+[gd_scene load_steps=10 format=3 uid="uid://dhwfu5jucqjbs"]
 
 [ext_resource type="PackedScene" uid="uid://4y7mahd58sbf" path="res://addons/simulation/Scenes/Menus/groupMenu.tscn" id="1_vvj68"]
 [ext_resource type="PackedScene" uid="uid://cd6ru4ew3y7ia" path="res://addons/simulation/Scenes/Menus/componentMenu.tscn" id="2_7fhvs"]
 [ext_resource type="PackedScene" uid="uid://dh147q8fvs03h" path="res://addons/simulation/Scenes/map.tscn" id="2_ijttx"]
 [ext_resource type="PackedScene" uid="uid://dbrd0e5gmyhg" path="res://addons/simulation/Scenes/Menus/InspectorMenu.tscn" id="3_vvj68"]
+[ext_resource type="Script" uid="uid://dwts1fv83q85p" path="res://Scripts/Console.gd" id="4_7fhvs"]
 [ext_resource type="PackedScene" uid="uid://bdu33pbmnj6yc" path="res://addons/simulation/Scenes/Menus/varMenu.tscn" id="4_ijttx"]
 [ext_resource type="PackedScene" uid="uid://d2jmtuufu3ipr" path="res://addons/simulation/Scenes/Menus/settingsMenu.tscn" id="5_7fhvs"]
 
@@ -20,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = -350
+split_offset = -355
 metadata/_tab_index = 0
 
 [node name="TabContainer" type="TabContainer" parent="."]
@@ -28,7 +29,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 1
 
-[node name="Groups" parent="TabContainer" node_paths=PackedStringArray("maps") instance=ExtResource("1_vvj68")]
+[node name="Storage" parent="TabContainer" node_paths=PackedStringArray("maps") instance=ExtResource("1_vvj68")]
 visible = false
 layout_mode = 2
 maps = NodePath("../../HFlowContainer/VSplitContainer/Map")
@@ -51,20 +52,46 @@ split_offset = 100
 [node name="Map" parent="HFlowContainer/VSplitContainer" node_paths=PackedStringArray("console") instance=ExtResource("2_ijttx")]
 layout_mode = 2
 size_flags_vertical = 3
-console = NodePath("../RichTextLabel")
+console = NodePath("../Control/RichTextLabel")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VSplitContainer"]
+[node name="Control" type="Control" parent="HFlowContainer/VSplitContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("4_7fhvs")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HFlowContainer/VSplitContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 focus_mode = 2
 theme_override_colors/selection_color = Color(0.325441, 0.325441, 0.325441, 1)
 theme_override_fonts/mono_font = SubResource("SystemFont_ivafm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_kdh3f")
 bbcode_enabled = true
-text = "MusGroups v0.1.51 pre-Alpha - visit \"https://discord.gg/XxwsTkY2p7\" for support."
+text = "MusGroups v0.1.52 pre-Alpha - visit \"https://discord.gg/XxwsTkY2p7\" for support."
 scroll_following = true
 threaded = true
 selection_enabled = true
+
+[node name="Clear" type="Button" parent="HFlowContainer/VSplitContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Clear console
+"
 
 [node name="Control" type="Control" parent="HFlowContainer"]
 layout_mode = 2

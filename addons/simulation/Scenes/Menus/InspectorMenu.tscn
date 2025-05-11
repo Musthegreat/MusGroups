@@ -11,9 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_83jyh")
-newLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/newLogic")
-saveLogic = NodePath("BoxContainer/ScrollContainer/LogicHolder/saveLogic")
-logicHolder = NodePath("BoxContainer/ScrollContainer/LogicHolder")
+newLogic = NodePath("BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder/newLogic")
+saveLogic = NodePath("BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder/saveLogic")
+logicHolder = NodePath("BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder")
 logicContainer = ExtResource("2_s1i0a")
 nodeName = NodePath("BoxContainer/HBoxContainer/name")
 confirm = NodePath("BoxContainer/HBoxContainer/confirm")
@@ -41,68 +41,69 @@ alignment = 1
 layout_mode = 2
 text = "Confirm"
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="BoxContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="componentMenu" type="VBoxContainer" parent="BoxContainer/ScrollContainer2"]
+[node name="ScrollContainer2" type="ScrollContainer" parent="BoxContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="componentMenu" type="VBoxContainer" parent="BoxContainer/VSplitContainer/ScrollContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HSeparator" type="HSeparator" parent="BoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer/VSplitContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="conditions" type="Label" parent="BoxContainer"]
+[node name="conditions" type="Label" parent="BoxContainer/VSplitContainer/VBoxContainer"]
 layout_mode = 2
-text = "Conditions
+text = "Logic
 "
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BoxContainer/VSplitContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="LogicHolder" type="VBoxContainer" parent="BoxContainer/ScrollContainer"]
+[node name="LogicHolder" type="VBoxContainer" parent="BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="newLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
+[node name="newLogic" type="Button" parent="BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "New Logic"
 
-[node name="saveLogic" type="Button" parent="BoxContainer/ScrollContainer/LogicHolder"]
+[node name="saveLogic" type="Button" parent="BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 text = "Save logic"
 
-[node name="Panel" type="Panel" parent="BoxContainer/ScrollContainer/LogicHolder"]
+[node name="Panel" type="Panel" parent="BoxContainer/VSplitContainer/VBoxContainer/ScrollContainer/LogicHolder"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="HSeparator2" type="HSeparator" parent="BoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="BoxContainer/VSplitContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="save" type="Button" parent="BoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.1
-text = "Save node"
-
-[node name="clone" type="Button" parent="BoxContainer"]
+[node name="clone" type="Button" parent="BoxContainer/VSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Clone group"
 
-[node name="remove" type="Button" parent="BoxContainer"]
+[node name="remove" type="Button" parent="BoxContainer/VSplitContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Remove group
 "

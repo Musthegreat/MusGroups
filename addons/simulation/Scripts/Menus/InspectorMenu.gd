@@ -13,10 +13,10 @@ func _ready() -> void:
 	saveLogic.pressed.connect(logicSave)
 	MusGroups.loadSelected.connect(logicLoad)
 	confirm.pressed.connect(changeName)
-	$BoxContainer/clone.pressed.connect(clone)
-	$BoxContainer/remove.pressed.connect(remove)
+	%clone.pressed.connect(clone)
+	%remove.pressed.connect(remove)
 	
-	MusGroups.inspector = self
+	MusGroups.sceneReferences["inspector"] = self
 
 func clone() -> void:
 	var g: group = group.loadGroup(MusGroups.selectedGroup, MusGroups.identifier)

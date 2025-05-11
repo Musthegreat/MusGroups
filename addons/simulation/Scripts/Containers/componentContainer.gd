@@ -10,4 +10,4 @@ func setName() -> void:
 	%Name.set_text("   " + typeName)
 
 func addComponent() -> void:
-	MusGroups.maps.componentAdd(type, typeName)
+	MusGroups.sceneReferences["map"].componentAdd(type, typeName)

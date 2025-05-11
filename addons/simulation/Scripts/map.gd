@@ -19,8 +19,8 @@ func _ready() -> void:
 	MusGroups.game = "bust city"
 	MusGroups.identifier = MusGroups.generateWord("bus", 5)
 	
-	MusGroups.console = console
-	MusGroups.maps = self
+	MusGroups.sceneReferences["map"] = self
+	MusGroups.sceneReferences["console"] = console
 	
 	#connect to signals relavent to map
 	addGroup.button_down.connect(groupAdd)
@@ -56,7 +56,7 @@ func mapLoad() -> void:
 			
 			g.update(m.data[i]["ID"])
 			g.selection.hide()
-	MusGroups.groupMenu.update()
+	MusGroups.sceneReferences["groupMenu"].update()
 
 func groupAdd() -> void:
 	# r is resource, I is instance ID

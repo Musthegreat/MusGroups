@@ -3,35 +3,20 @@ signal client_loadSelected
 signal loadSelected
 
 var game: String
+var lua: LuaState = LuaState.new()
+var API: LuaTable = lua.create_table()
 
 var isDragging: bool = false
 var identifier: String
 
 var runQeueue: Array
-var componentList: Array = [timer]
-var componentNamesList: Array = ["timer"]
+var componentList: Array = [group, timer, character]
+var componentNamesList: Array = ["group","timer", "character"]
 
-#region Node and Scene References
-var client_selectedGroup: String
+var sceneReferences: Dictionary
 var selectedGroup: String
 
-var client_logicList: Dictionary
 var logicList: Dictionary
-
-var client_groupMenu: Control
-var groupMenu: Control
-
-var client_maps: Control
-var maps: Control
-
-var client_console: RichTextLabel
-var console: RichTextLabel
-
-var client_inspector: Control
-var inspector: Control
-
-var clientSpace: Control
-#endregion
 
 func newGame(gameName: String) -> void:
 	game = gameName
@@ -75,12 +60,20 @@ func newGame(gameName: String) -> void:
 		print("made server class map")
 		dir.make_dir_absolute("user://"+game +"/server/data/map")
 
+func createEnviorment() -> void:
+	lua.open_libraries(LuaState.GODOT_VARIANT)
+	
+	API["This"] = null
+	API["Math"] = Math
+	API["Groups"] = Groups
+	API["pront"] = Print.luaPrint
+
 func removeFile(fileName: String, folder: String, context: String = "server") -> void:
 	DirAccess.remove_absolute("user://"+game +"/"+context+"/data/" + folder + "/"+fileName)
 
 func checkIdentifier(value: String, funcName: String) -> bool:
 	if value != identifier:
-		Print.printErr(console, "You are not allowed access to function: " + funcName)
+		Print.printErr(MusGroups.sceneReferences["console"], "You are not allowed access to function: " + funcName)
 		return false
 	return true
 	
@@ -101,9 +94,6 @@ func generateWord(chars: String, length) -> String:
 func loadLists(type: String, context: String = "server") -> PackedStringArray:
 	var contents: PackedStringArray = DirAccess.get_files_at("user://"+game +"/"+context+"/data/" + type)
 	return contents
-
-func client_loadSelection() -> void:
-	client_loadSelected.emit(client_selectedGroup)
 
 func loadSelection() -> void:
 	loadSelected.emit(selectedGroup)

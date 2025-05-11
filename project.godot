@@ -30,7 +30,7 @@ HP2P="*res://addons/epic-online-services-godot/heos/hp2p.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/epic-online-services-godot/plugin.cfg", "res://addons/god_plot/plugin.cfg", "res://addons/lua-gdextension/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/epic-online-services-godot/plugin.cfg", "res://addons/god_plot/plugin.cfg", "res://addons/lua-gdextension/plugin.cfg")
 
 [input]
 

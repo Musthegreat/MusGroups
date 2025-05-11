@@ -32,9 +32,10 @@ static func loadGroup(Instance: String, identifier: String) -> Resource:
 
 #region MusAPI
 static func run(Instance: String) -> void:
+	
 	MusGroups.runQeueue.append(Instance)
 
-static func getGroup(Instance: String) -> group:
+static func getGroup(Instance: String): 
 	return group.loadGroup(Instance, MusGroups.identifier)
 
 func getVar(varName: String):
@@ -92,22 +93,28 @@ func setVar(varName: String, data: Variant) -> void:
 	MusGroups.selectedGroup = Instance
 	MusGroups.loadSelection()
 
-#func addLogic(logicInstance: String) -> void:
-	#Logics.append(logicInstance)
-	#
-	#save(MusGroups.identifier)
-	#MusGroups.selectedGroup = Instance
-	#MusGroups.loadSelection()
-#
-#func removeLogic(logicInstance: String) -> void:
-	#Logics.remove_at(Logics.find(logicInstance))
-	#
-	#save(MusGroups.identifier)
-	#MusGroups.selectedGroup = Instance
-	#MusGroups.loadSelection()
+func runLogic(logicInstance: String) -> void:
+	var l: logic = logic.loadLogic(logicInstance, MusGroups.identifier)
+	
+	MusGroups.API["This"] = self
+	MusGroups.lua.do_string(l.unsplitCode, "", MusGroups.API)
+
+func addLogic(logicInstance: String) -> void:
+	Logics.append(logicInstance)
+	
+	save(MusGroups.identifier)
+	MusGroups.selectedGroup = Instance
+	MusGroups.loadSelection()
+
+func removeLogic(logicInstance: String) -> void:
+	Logics.remove_at(Logics.find(logicInstance))
+	
+	save(MusGroups.identifier)
+	MusGroups.selectedGroup = Instance
+	MusGroups.loadSelection()
 
 func clone() -> void:
-	var currentMap = MusGroups.maps
+	var currentMap = MusGroups.sceneReferences["map"]
 	
 	# r is resource, I is instance ID
 	var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)

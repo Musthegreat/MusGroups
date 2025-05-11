@@ -29,10 +29,11 @@ layout_mode = 2
 text = "Timer"
 horizontal_alignment = 1
 
-[node name="timerToggle" type="CheckBox" parent="VBoxContainer2"]
+[node name="timerToggle" type="CheckButton" parent="VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Timer is on"
+size_flags_horizontal = 0
+text = "Ticking"
 
 [node name="timeTillUpdate" type="Label" parent="VBoxContainer2"]
 unique_name_in_owner = true

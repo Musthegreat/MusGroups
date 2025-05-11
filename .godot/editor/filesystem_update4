@@ -1,2 +1,11 @@
 res://Scenes/editorComponent.tscn
-res://addons/simulation/MusAPI/Basic/Graphs.gd
+res://addons/simulation/Scenes/Menus/logicMenu.tscn
+res://addons/simulation/Scenes/map.tscn
+res://Scenes/game.tscn
+res://addons/simulation/MusAPI/Basic/Components/timer/timerInspector.tscn
+res://addons/simulation/MusAPI/Basic/Components/character/characterInspector.tscn
+res://addons/simulation/MusAPI/Basic/Components/visual/visualInspector.tscn
+res://addons/simulation/Scenes/Menus/componentMenu.tscn
+res://addons/simulation/Scenes/Menus/InspectorMenu.tscn
+res://addons/simulation/Scenes/Containers/componentContainer.tscn
+res://Scenes/editor.tscn

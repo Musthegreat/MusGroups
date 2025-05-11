@@ -49,6 +49,7 @@ size_flags_vertical = 8
 alignment = 2
 
 [node name="Add Group" type="Button" parent="MarginContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 8
 text = "New Group"

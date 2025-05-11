@@ -9,7 +9,7 @@ func _ready() -> void:
 	button.pressed.connect(refresh)
 	maps.savedMap.connect(refresh)
 	MusGroups.game = "bust city"
-	MusGroups.groupMenu = self
+	MusGroups.sceneReferences["groupMenu"] = self
 
 func update() -> void:
 	var groups = MusGroups.loadLists("groups")
@@ -21,7 +21,8 @@ func update() -> void:
 		
 		var g = group.loadGroup(MusGroups.fixFileName(i, ""), MusGroups.identifier)
 		new.maps = maps
-		new.onLoad(g)
+		if g != null:
+			new.onLoad(g)
 
 func refresh() -> void:
 	for child in container.get_children():

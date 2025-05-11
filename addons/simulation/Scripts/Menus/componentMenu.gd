@@ -5,7 +5,7 @@ extends Control
 func _ready() -> void:
 	for i in MusGroups.componentList.size():
 		var new = componentContainer.instantiate()
-		%ScrollContainer.add_child(new)
+		%VBoxContainer.add_child(new)
 		new.type = MusGroups.componentList[i]
 		new.typeName = MusGroups.componentNamesList[i]
 		new.setName()

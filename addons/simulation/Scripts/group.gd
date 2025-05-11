@@ -43,4 +43,4 @@ func delete() -> void:
 	var dir: map = map.loadMap()
 	dir.data.erase(Instance)
 	dir.save()
-	MusGroups.maps.allSave(Vector2(0,0),Vector2(0,0))
+	MusGroups.sceneReferences["map"].allSave(Vector2(0,0),Vector2(0,0))

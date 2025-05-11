@@ -33,11 +33,38 @@ static func getVar(Instance: String, varName: String) -> Variant:
 
 static func run(targets: Array) -> void:
 	MusGroups.runQeueue.append_array(targets)
+
+static func runByName(name: String, targets: Array = []) -> void:
+	var dir: map = map.loadMap()
+	for i in dir.data:
+		var g = group.loadGroup(i, MusGroups.identifier)
+		if g.Name == name:
+			targets.append(g.Instance)
+	MusGroups.runQeueue.append_array(targets)
+
+static func runByVar(varName: String, type = null, targets: Array = []):
+	var dir: map = map.loadMap()
+	if type == null:
+		for i in dir.data:
+			var g = group.loadGroup(i, MusGroups.identifier)
+			for a in g.Variables:
+				if g.Variables[a]["Name"] == varName:
+					targets.append(g.Instance)
+		MusGroups.runQeueue.append_array(targets)
+		return
+	
+	for i in dir.data:
+		var g = group.loadGroup(i, MusGroups.identifier)
+		for a in g.Variables:
+			if g.Variables[a]["Name"] == varName and g.Variables[a]["Type"] == type:
+				targets.append(a.instance)
+	MusGroups.runQeueue.append_array(targets)
+	
 #endregion
 
 #region Modify
 static func removeByID(Instance: String) -> void:
-	var currentMap = MusGroups.maps
+	var currentMap = MusGroups.sceneReferences["map"]
 	
 	var foundOne: bool = false
 	for a in currentMap.Graph.get_children():
@@ -51,7 +78,7 @@ static func removeByID(Instance: String) -> void:
 	currentMap.allSave()
 	
 static func removeByName(Name: String) -> void:
-	var currentMap = MusGroups.maps
+	var currentMap = MusGroups.sceneReferences["map"]
 	
 	var foundOne: bool = false
 	for a in currentMap.Graph.getChildren():

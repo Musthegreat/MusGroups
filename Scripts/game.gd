@@ -3,21 +3,12 @@ extends Control
 @onready var UI: CanvasLayer = %UI
 @onready var gameSpace: Node2D = %gameSpace
 
-var lua: LuaState = LuaState.new()
-var API: LuaTable = lua.create_table()
-
-func hookAPI() -> void:
-	API["This"] = null
-	API["Groups"] = Groups
-	API["pront"] = Print.luaPrint
-	API["Graphs"] = Graphs
-
 func _ready() -> void:
-	%Timer.timeout.connect(runTimer)
-	MusGroups.clientSpace = self
+	MusGroups.createEnviorment()
 	
-	lua.open_libraries(LuaState.GODOT_VARIANT)
-	hookAPI()
+	%Timer.timeout.connect(runTimer)
+	MusGroups.sceneReferences["clientSpace"] = self
+	
 	%Timer.start(1)
 
 func _process(delta: float) -> void:
@@ -25,11 +16,10 @@ func _process(delta: float) -> void:
 		var g = group.loadGroup(MusGroups.runQeueue[0], MusGroups.identifier)
 		for i in g.Logics:
 			var l: logic = logic.loadLogic(i, MusGroups.identifier)
-			API["This"] = g
-			var result = lua.do_string(l.unsplitCode, "", API)
+			MusGroups.API["This"] = g
+			var result = MusGroups.lua.do_string(l.unsplitCode, "", MusGroups.API)
 			if result is LuaError:
-				pass
-				#Print.printErr(console, result)
+				Print.printErr(MusGroups.sceneReferences["console"], result)
 		MusGroups.runQeueue.remove_at(0)
 
 func runTimer() -> void:
