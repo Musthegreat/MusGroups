@@ -1,6 +1,6 @@
 ## This project is a tool built to make games faster in the Godot engine.
 
-The version used for developing this tool is **Godot Version 4.4.1** but this project was started in version 4.3.
+The Godot version used for developing this tool is **Godot version 4.4.1** but this project was started in version 4.3.
 
 This tool relies heavily on third-party plugins for some features, these plugins are as follows:
 
