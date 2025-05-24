@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhscigh52b2pm"]
+[gd_scene load_steps=9 format=3 uid="uid://dhscigh52b2pm"]
 
 [ext_resource type="PackedScene" uid="uid://cv4ksjiw2tk2e" path="res://Scenes/game.tscn" id="1_a7iym"]
 [ext_resource type="Script" uid="uid://bq6d6srycfe3m" path="res://Scripts/editor.gd" id="1_wkuwf"]
 [ext_resource type="PackedScene" uid="uid://dhwfu5jucqjbs" path="res://Scenes/editorComponent.tscn" id="2_7wlcy"]
+[ext_resource type="Script" uid="uid://cmarkh3tpvykn" path="res://Scripts/realtimeEditor.gd" id="2_b78su"]
+[ext_resource type="Script" uid="uid://b3igp6dwryul0" path="res://Scripts/dataTransfer.gd" id="3_8howc"]
+[ext_resource type="Script" uid="uid://m5t81g01sqs5" path="res://scripts/multiplayer.gd" id="4_7fkqn"]
 [ext_resource type="PackedScene" uid="uid://cjsj1w7benkex" path="res://addons/simulation/Scenes/Menus/logicMenu.tscn" id="4_7wlcy"]
+[ext_resource type="PackedScene" uid="uid://d2jmtuufu3ipr" path="res://addons/simulation/Scenes/Menus/settingsMenu.tscn" id="5_wkuwf"]
 
 [node name="Editor" type="Control"]
 layout_mode = 3
@@ -24,6 +28,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Realtime Editor" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_b78su")
+
+[node name="Data Transfer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_8howc")
+
+[node name="Multiplayer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_7fkqn")
+
 [node name="TabContainer" type="TabContainer" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -35,16 +51,27 @@ grow_vertical = 2
 current_tab = 1
 
 [node name="Game" parent="TabContainer" instance=ExtResource("1_a7iym")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Editor" type="TabContainer" parent="TabContainer"]
+[node name="Editor" type="VBoxContainer" parent="TabContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-current_tab = 0
-tabs_position = 1
 metadata/_tab_index = 1
 
-[node name="Server" parent="TabContainer/Editor" instance=ExtResource("2_7wlcy")]
+[node name="editor" parent="TabContainer/Editor" instance=ExtResource("2_7wlcy")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="contextSwitcher" type="TabBar" parent="TabContainer/Editor"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+current_tab = 0
+tab_count = 2
+tab_0/title = "server"
+tab_1/title = "client"
 
 [node name="Logic" type="TabContainer" parent="TabContainer"]
 visible = false
@@ -54,6 +81,10 @@ tabs_position = 1
 metadata/_tab_index = 2
 
 [node name="Editor" parent="TabContainer/Logic" instance=ExtResource("4_7wlcy")]
-unique_name_in_owner = true
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="Settings" parent="TabContainer" instance=ExtResource("5_wkuwf")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3

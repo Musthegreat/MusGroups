@@ -1,9 +1,19 @@
 extends Control
+signal startServer
+signal startClient
 
 @onready var UI: CanvasLayer = %UI
 @onready var gameSpace: Node2D = %gameSpace
 
+var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+
 func _ready() -> void:
+	await get_tree().create_timer(0.2).timeout
+	if MusGroups.context == "server":
+		startServer.emit()
+	elif MusGroups.context == "client":
+		startClient.emit()
+	
 	MusGroups.createEnviorment()
 	
 	%Timer.timeout.connect(runTimer)

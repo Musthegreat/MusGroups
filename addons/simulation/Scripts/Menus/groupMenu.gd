@@ -8,7 +8,6 @@ extends Control
 func _ready() -> void:
 	button.pressed.connect(refresh)
 	maps.savedMap.connect(refresh)
-	MusGroups.game = "bust city"
 	MusGroups.sceneReferences["groupMenu"] = self
 
 func update() -> void:
@@ -29,4 +28,5 @@ func refresh() -> void:
 		if child is not Button:
 			child.queue_free()
 		
+	
 	update()

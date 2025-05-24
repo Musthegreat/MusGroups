@@ -42,5 +42,5 @@ func delete() -> void:
 	queue_free()
 	var dir: map = map.loadMap()
 	dir.data.erase(Instance)
-	dir.save()
+	dir.save(MusGroups.identifier)
 	MusGroups.sceneReferences["map"].allSave(Vector2(0,0),Vector2(0,0))

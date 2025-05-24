@@ -1,11 +1,6 @@
 extends Control
 signal savedMap
 
-@export_category("Buttons")
-@export var addGroup: Button
-@export var saveAll: Button
-@export var stepSimulation: Button
-
 @export_category("Other")
 @export var Graph: GraphEdit
 @export var Group: PackedScene
@@ -16,16 +11,12 @@ var lua: LuaState = LuaState.new()
 var API: LuaTable = lua.create_table()
 
 func _ready() -> void:
-	MusGroups.game = "bust city"
-	MusGroups.identifier = MusGroups.generateWord("bus", 5)
 	
 	MusGroups.sceneReferences["map"] = self
 	MusGroups.sceneReferences["console"] = console
 	
 	#connect to signals relavent to map
-	addGroup.button_down.connect(groupAdd)
-	saveAll.button_down.connect(allSave)
-	stepSimulation.button_down.connect(sendToServer)
+	%uploadChanges.pressed.connect(func(): MusGroups.sceneReferences["editor"].uploadFiles())
 	
 	mapLoad()
 
@@ -43,12 +34,12 @@ func mapLoad() -> void:
 		t.Instance = I
 		t.Name = "Timer"
 		t.save(MusGroups.identifier)
-		allSave(Vector2(0,0), Vector2(0,0))
+		allSave()
 		mapLoad()
 	else:
 		for i in m.data:
 			var g = Group.instantiate()
-			g.dragged.connect(allSave)
+			g.dragged.connect(allSave.unbind(2))
 			Graph.add_child(g)
 			g.node_selected.connect(selectGroup.bind(g))
 			g.Instance = m.data[i]["ID"]
@@ -63,7 +54,7 @@ func groupAdd() -> void:
 	var I: String = MusGroups.generateWord("abcdefghijABDEFGHIJ1234567890", 10)
 	
 	var G = Group.instantiate()
-	G.dragged.connect(allSave)
+	G.dragged.connect(allSave.unbind(2))
 	Graph.add_child(G)
 	G.node_selected.connect(selectGroup.bind(G))
 	G.Instance = I
@@ -73,17 +64,17 @@ func groupAdd() -> void:
 	g.Name = "group"
 	g.save(MusGroups.identifier)
 	
-	allSave(Vector2(0,0), Vector2(0,0))
+	allSave()
 
 func groupAddExisting(Instance) -> void:
 	var G = Group.instantiate()
-	G.dragged.connect(allSave)
+	G.dragged.connect(allSave.unbind(2))
 	Graph.add_child(G)
 	G.node_selected.connect(selectGroup.bind(G))
 	G.Instance = Instance
 	G.update(Instance)
 	
-	allSave(Vector2(0,0), Vector2(0,0))
+	allSave()
 
 func componentAdd(type: GDScript, typeName: String) -> void:
 	# r is resource, I is instance ID
@@ -91,7 +82,7 @@ func componentAdd(type: GDScript, typeName: String) -> void:
 	
 	var G = Group.instantiate()
 	Graph.add_child(G)
-	G.dragged.connect(allSave)
+	G.dragged.connect(allSave.unbind(2))
 	G.node_selected.connect(selectGroup.bind(G))
 	G.Instance = I
 	
@@ -103,14 +94,14 @@ func componentAdd(type: GDScript, typeName: String) -> void:
 	
 	G.update(I)
 	
-	allSave(Vector2(0,0), Vector2(0,0))
+	allSave()
 
-func allSave(from, to) -> void:
+func allSave() -> void:
 	var m = map.new()
 	for G in Graph.get_children():
 		if G is groupVisual:
 			m.append(G)
-	m.save()
+	m.save(MusGroups.identifier)
 	savedMap.emit()
 	
 #endregion

@@ -1,12 +1,16 @@
-[gd_scene format=3 uid="uid://5o0kco08i1ev"]
+[gd_scene load_steps=2 format=3 uid="uid://5o0kco08i1ev"]
+
+[ext_resource type="Script" uid="uid://dbdbjvtosgg73" path="res://Scripts/Containers/gameContainer.gd" id="1_uh5cl"]
 
 [node name="GameContainer" type="Control"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uh5cl")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -25,17 +29,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Join game"
 
 [node name="gameName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "Republic Rising"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="description" type="Label" parent="HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -43,15 +51,18 @@ text = "simulates the early roman republic"
 vertical_alignment = 1
 
 [node name="playersOnline" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "0 players in this game"
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
+[node name="join" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Join game"
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+visible = false
 layout_mode = 2

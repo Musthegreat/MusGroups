@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhwfu5jucqjbs"]
+[gd_scene load_steps=9 format=3 uid="uid://dhwfu5jucqjbs"]
 
 [ext_resource type="PackedScene" uid="uid://4y7mahd58sbf" path="res://addons/simulation/Scenes/Menus/groupMenu.tscn" id="1_vvj68"]
 [ext_resource type="PackedScene" uid="uid://cd6ru4ew3y7ia" path="res://addons/simulation/Scenes/Menus/componentMenu.tscn" id="2_7fhvs"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dbrd0e5gmyhg" path="res://addons/simulation/Scenes/Menus/InspectorMenu.tscn" id="3_vvj68"]
 [ext_resource type="Script" uid="uid://dwts1fv83q85p" path="res://Scripts/Console.gd" id="4_7fhvs"]
 [ext_resource type="PackedScene" uid="uid://bdu33pbmnj6yc" path="res://addons/simulation/Scenes/Menus/varMenu.tscn" id="4_ijttx"]
-[ext_resource type="PackedScene" uid="uid://d2jmtuufu3ipr" path="res://addons/simulation/Scenes/Menus/settingsMenu.tscn" id="5_7fhvs"]
 
 [sub_resource type="SystemFont" id="SystemFont_ivafm"]
 font_names = PackedStringArray("Monospace")
@@ -117,8 +116,3 @@ metadata/_tab_index = 0
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
-
-[node name="Settings" parent="HFlowContainer/Control/TabContainer" instance=ExtResource("5_7fhvs")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 2

@@ -74,6 +74,16 @@ size_flags_vertical = 3
 [node name="condition" type="CodeEdit" parent="Logic Editor/Logic Editor/ScrollContainer/conditionContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+placeholder_text = "Groups:runByName(\"group\")
+
+local targets = Groups:getByVar(\"isHuman\")
+
+local data = Array[]
+for i=1 in #targets do
+	local group = This:getGroup(targets[i])
+	local name = group.Name
+	pront(\"I am \" .. name)
+end"
 wrap_mode = 1
 caret_blink = true
 syntax_highlighter = SubResource("CodeHighlighter_x25f2")

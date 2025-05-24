@@ -9,24 +9,20 @@ class_name group
 
 var Menu: Array = [preload("res://addons/simulation/MusAPI/Basic/Components/empty/emtpy.tscn")]
 
-var context = "server"
 func save(identifier) -> void:
-	
 	if MusGroups.checkIdentifier(identifier, "loadGroup") != true:
 		Print.printErr(MusGroups.console, "Failed to load group with ID of " + Instance)
 		return
 	
-	ResourceSaver.save(self, "user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
+	ResourceSaver.save(self, "user://games/"+MusGroups.game +"/" +MusGroups.context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
 
 static func loadGroup(Instance: String, identifier: String) -> Resource:
-	var context = "server"
-	
 	if MusGroups.checkIdentifier(identifier, "loadGroup") != true:
 		Print.printErr(MusGroups.console, "Failed to load group with ID of " + Instance)
 		return
 		
-	if ResourceLoader.exists("user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres")):
-		return ResourceLoader.load("user://"+MusGroups.game +"/" +context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
+	if ResourceLoader.exists("user://games/"+MusGroups.game +"/" +MusGroups.context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres")):
+		return ResourceLoader.load("user://games/"+MusGroups.game +"/" +MusGroups.context+ "/data/groups/" + MusGroups.fixFileName(Instance, ".tres"))
 	else:
 		return null
 
@@ -135,5 +131,5 @@ func clone() -> void:
 	
 	g.update(I)
 	
-	currentMap.allSave(Vector2(0,0), Vector2(0,0))
+	currentMap.allSave()
 #endregion

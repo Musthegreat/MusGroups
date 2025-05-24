@@ -9,13 +9,13 @@ func save(Instance, identifier) -> void:
 	if MusGroups.checkIdentifier(identifier, "logic:save()") != true:
 		return
 	
-	ResourceSaver.save(self, "user://"+MusGroups.game +"/server/data/logic/" + MusGroups.fixFileName(Instance, ".tres"))
+	ResourceSaver.save(self, "user://games/"+MusGroups.game +"/" +MusGroups.context + "/data/logic/" + MusGroups.fixFileName(Instance, ".tres"))
 
 static func loadLogic(Instance, identifier) -> Resource:
 	if MusGroups.checkIdentifier(identifier, "logic:loadLogic()") != true:
 		return
 	
-	if ResourceLoader.exists("user://"+MusGroups.game +"/server/data/logic/" + MusGroups.fixFileName(Instance, ".tres")):
-		return ResourceLoader.load("user://"+MusGroups.game +"/server/data/logic/" + MusGroups.fixFileName(Instance, ".tres")) as logic
+	if ResourceLoader.exists("user://games/"+MusGroups.game +"/" +MusGroups.context + "/data/logic/" + MusGroups.fixFileName(Instance, ".tres")):
+		return ResourceLoader.load("user://games/"+MusGroups.game +"/" +MusGroups.context + "/data/logic/" + MusGroups.fixFileName(Instance, ".tres")) as logic
 	else:
 		return null

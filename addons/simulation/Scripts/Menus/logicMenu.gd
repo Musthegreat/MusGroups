@@ -13,7 +13,6 @@ var toggle: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MusGroups.sceneReferences["inspector"].openLogic.connect(openLogic)
-	MusGroups.newGame("bust city")
 	logicList.item_selected.connect(loadLogic)
 	saveButton.pressed.connect(save)
 	
