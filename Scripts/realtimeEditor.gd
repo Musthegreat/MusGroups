@@ -1,6 +1,6 @@
 extends Node
 
-var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+var peer := ENetMultiplayerPeer.new()
 
 func _ready() -> void:
 	%Game.startServer.connect(startServer)

@@ -2,9 +2,9 @@ extends Node
 
 var peer := ENetMultiplayerPeer.new()
 
-func _ready() -> void:
-	%Game.startServer.connect(startServer)
-	%Game.startClient.connect(startClient)
+#func _ready() -> void:
+	#%Game.startServer.connect(startServer)
+	#%Game.startClient.connect(startClient)
 
 func startServer() -> void:
 	print("starting server...")
@@ -20,6 +20,7 @@ func startClient() -> void:
 	
 	peer.create_client(ip, port)
 	multiplayer.multiplayer_peer = peer
+	MusGroups.sceneReferences["MP_PEER"] = peer
 
 func peerConnected(id: int) -> void:
 	pass

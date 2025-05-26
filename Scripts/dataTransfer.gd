@@ -7,16 +7,25 @@ func _ready() -> void:
 	%Game.startClient.connect(startClient)
 
 func startServer() -> void:
-	peer.create_server(MusGroups.serverInfo["DATA_PORT"])
+	print("testiNGGGGGGGGGGGGG")
+	var error = peer.create_server(MusGroups.serverInfo["DATA_PORT"])
+	if error != OK:
+		printerr(error_string(error))
+		return
+	
 	multiplayer.multiplayer_peer = peer
 	peer.peer_connected.connect(peerConnected)
 	MusGroups.sceneReferences["DATA_PEER"] = peer
 
 func startClient() -> void:
-	var ip = MusGroups.lobby.get_attribute("SERVER_IP")["value"]
-	var port = MusGroups.lobby.get_attribute("DATA_PORT")["value"]
+	var ip = await MusGroups.lobby.get_attribute("SERVER_IP")["value"]
+	var port = await MusGroups.lobby.get_attribute("DATA_PORT")["value"]
 	
-	peer.create_client(ip, port)
+	var error = peer.create_client(ip, port)
+	if error != OK:
+		printerr(error_string(error))
+		return
+	
 	multiplayer.multiplayer_peer = peer
 	MusGroups.sceneReferences["DATA_PEER"] = peer
 

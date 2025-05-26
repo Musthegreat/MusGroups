@@ -37,8 +37,7 @@ func startLobby() -> void:
 	
 	var update = await lobby.update_async()
 	if not update:
-		MusGroups.lobby = null
-		get_tree().change_scene_to_packed(preload("res://Scenes/mainMenu.tscn"))
+		printerr("failed to update the lobby")
 
 func switchContext(tab: int) -> void:
 	if tab == 0:
@@ -54,6 +53,3 @@ func modifyEditor(editor: Array) -> void:
 			
 	%TabContainer.tabs_visible = false
 	%TabContainer.current_tab = 0
-
-func uploadFiles() -> void:
-	pass
